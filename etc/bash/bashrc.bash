@@ -1,7 +1,7 @@
-$BASH=$HOME/dotfiles
+BASH=$HOME/dotfiles
 
-source etc/env.sh
-source etc/aliases.sh
+source $BASH/etc/env.sh
+source $BASH/etc/aliases.sh
 
 export PS1="\[\033[36m\]\u\[\033[m\]@\[\033[32m\]\h:\[\033[33;1m\]\w\[\033[m\]\$ "
 
