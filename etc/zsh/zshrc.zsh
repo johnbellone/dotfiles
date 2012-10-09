@@ -2,7 +2,7 @@ DOT=$HOME/dotfiles
 ZSH=$HOME/.zsh
 
 autoload -U promptinit && promptinit
-PROMPT='%F{24}%* %E%F{228} %~ %F{231}%#%E %F{254}'
+PROMPT='%F{24}%*  %E%F{250}%m:%E%F{228}%~ %F{240}%#%E %F{254}'
 
 setopt prompt_subst
 autoload colors zsh/terminfo
