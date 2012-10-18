@@ -4,3 +4,6 @@
 [submodule "lib/zsh/git-prompt"]
 	path = lib/zsh/git-prompt
 	url = https://github.com/olivierverdier/zsh-git-prompt
+[submodule "lib/vim"]
+	path = lib/vim
+	url = http://github.com/johnbellone/vim
