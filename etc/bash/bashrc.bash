@@ -67,5 +67,6 @@ if [ -f ~/.bash_aliases ]; then . ~/.bash_aliases; fi
 
 [ -d $HOME/homebrew/bin ] && PATH="$HOME/homebrew/bin:$PATH"
 [ -d $HOME/bin ] && PATH="$HOME/bin:$PATH"
+[ -d $HOME/.rbenv ] && [ `which rbenv` -eq 0 ] && eval "$(rbenv init -)"
 
 export PATH
