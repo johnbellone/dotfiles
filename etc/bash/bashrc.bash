@@ -69,4 +69,6 @@ if [ -f ~/.bash_aliases ]; then . ~/.bash_aliases; fi
 [ -d $HOME/bin ] && PATH="$HOME/bin:$PATH"
 [ -d $HOME/.rbenv ] && [ `which rbenv` -eq 0 ] && eval "$(rbenv init -)"
 
+[ -f ~/.bash_localrc ] && source ~/.bash_localrc
+
 export PATH
