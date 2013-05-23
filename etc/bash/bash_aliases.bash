@@ -21,6 +21,14 @@ alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
 
+# Rails specific stuff.
+alias rc="rails console"
+alias sc="script/console"
+alias b="bundle"
+alias bi="bundle install"
+alias bil="bundle install --local"
+alias bis="bundle install --binstubs"
+
 # Make sure that my grep is colorized.
 alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
