@@ -11,6 +11,7 @@ case $OSTYPE in
     darwin10.0)
         export CLICOLOR=1
         export LSCOLORS=gxBxhxDxfxhxhxhxhxcxcx
+        ;;
     *)
         ;;
 esac
