@@ -8,6 +8,9 @@ case $OSTYPE in
     Linux)
         alias ls='ls --color=auto'
         ;;
+    darwin10.0)
+        export CLICOLOR=1
+        export LSCOLORS=gxBxhxDxfxhxhxhxhxcxcx
     *)
         ;;
 esac
