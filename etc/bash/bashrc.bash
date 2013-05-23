@@ -80,3 +80,6 @@ if [ -f ~/.bash_aliases ]; then . ~/.bash_aliases; fi
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
 # sources /etc/bash.bashrc).
 if [ -f /etc/bash_completion ] && ! shopt -oq posix; then . /etc/bash_completion; fi
+
+[ -d $HOME/homebrew/bin ] && PATH="$HOME/homebrew/bin:$PATH"
+[ -d $HOME/bin ] && PATH="$HOME/bin:$PATH"
