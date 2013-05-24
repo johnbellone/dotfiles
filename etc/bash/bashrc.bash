@@ -3,9 +3,6 @@
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
 
-# Source the local machine configuration if it exists.
-[ -f ~/.bash_localrc ] && source ~/.bash_localrc
-
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
 
@@ -31,7 +28,8 @@ fi
 # You may want to put all your additions into a separate file like
 # ~/.bash_aliases, instead of adding them here directly.
 # See /usr/share/doc/bash-doc/examples in the bash-doc package.
-if [ -f ~/.bash_aliases ]; then . ~/.bash_aliases; fi
+[ -f ~/.bash_aliases ] && source ~/.bash_aliases
+[ -f ~/.bash_localrc ] && source ~/.bash_localrc
 
 [ -d $HOME/homebrew/bin ] && PATH="$HOME/homebrew/bin:$PATH"
 [ -d $HOME/bin ] && PATH="$HOME/bin:$PATH"
