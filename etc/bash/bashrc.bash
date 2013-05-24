@@ -3,6 +3,9 @@
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
 
+# Source the local machine configuration if it exists.
+[ -f ~/.bash_localrc ] && source ~/.bash_localrc
+
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
 
@@ -67,8 +70,7 @@ if [ -f ~/.bash_aliases ]; then . ~/.bash_aliases; fi
 
 [ -d $HOME/homebrew/bin ] && PATH="$HOME/homebrew/bin:$PATH"
 [ -d $HOME/bin ] && PATH="$HOME/bin:$PATH"
-[ -d $HOME/.rbenv ] && [ `which rbenv` -eq 0 ] && eval "$(rbenv init -)"
-
-[ -f ~/.bash_localrc ] && source ~/.bash_localrc
+[ -d $HOME/.rbenv ] && eval "$(rbenv init -)"
+[ -z "$RBENV_VERSION" ] && rbenv shell $RBENV_VERSION 
 
 export PATH
