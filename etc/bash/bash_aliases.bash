@@ -35,6 +35,7 @@ alias pr="git pull --rebase"
 alias prp="pr && git push"
 alias d="git diff"
 alias st="git st"
+alias k="kill -9"
 
 # Make sure that my grep is colorized.
 alias grep='grep --color=auto'
