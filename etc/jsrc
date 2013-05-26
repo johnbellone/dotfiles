@@ -1,0 +1,7 @@
+# -*- mode: sh -*-
+# ~/.jsrc
+
+[ ! -x /usr/local/bin/npm ] && exit 0
+
+export NPM_PATH=/usr/local/share/npm/lib/node_modules
+[ -d $NPM_PATH ] && PATH="$NPM_PATH:$PATH"
