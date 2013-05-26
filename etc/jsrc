@@ -1,7 +1,13 @@
 # -*- mode: sh -*-
 # ~/.jsrc
+[ ! -z $DEBUG ] && set -x
 
-[ ! -x /usr/local/bin/npm ] && exit 0
+export NODE_PATH=/usr/local/bin/node
+export NPM_PATH=/usr/local/bin/npm
 
-export NPM_PATH=/usr/local/share/npm/lib/node_modules
-[ -d $NPM_PATH ] && PATH="$NPM_PATH:$PATH"
+# Exit out immediately if binaries are not available.
+[ ! -x $NODE_PATH ] && exit 0
+[ ! -x $NPM_PATH ] && exit 0
+
+
+export PATH="/usr/local/share/npm/bin:$PATH"
