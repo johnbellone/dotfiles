@@ -29,8 +29,11 @@ fi
 [ -f ~/.bash_aliases ] && source ~/.bash_aliases
 [ -f ~/.bash_localrc ] && source ~/.bash_localrc
 
-[ -d $HOME/homebrew/bin ] && PATH="$HOME/homebrew/bin:$PATH"
-[ -d $HOME/bin ] && PATH="$HOME/bin:$PATH"
+export HOMEBREW_PATH=$HOME/homebrew/bin
+export HOMEBIN_PATH=$HOME/bin
+
+[ -d $HOMEBREW_PATH ] && PATH="$HOMEBREW_PATH:$PATH"
+[ -d $HOMEBIN_PATH ] && PATH="$HOMEBIN_PATH:$PATH"
 
 export EDITOR="emacs -nw"
 export PAGER="less"
