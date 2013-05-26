@@ -2,8 +2,11 @@
 # ~/.rubyrc
 [ ! -z $DEBUG ] && set -x
 
-export RBENV_PATH=$HOME/.rbenv/bin
-[ ! -d $RBENV_PATH ] && exit 0
+# Exit out immediately if rbenv is not in our PATH.
+$(which rbenv &>/dev/null) && [ $? -ne 0 ] && return
+
+export RBENV_PATH=$HOME/.rbenv/shims
+[ ! -d $RBENV_PATH ] && return
 
 # Default to 1.9.3 but take into account versions that may
 # have been set on the local machine.

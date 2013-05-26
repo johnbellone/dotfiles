@@ -2,12 +2,8 @@
 # ~/.jsrc
 [ ! -z $DEBUG ] && set -x
 
-export NODE_PATH=/usr/local/bin/node
-export NPM_PATH=/usr/local/bin/npm
-
 # Exit out immediately if binaries are not available.
-[ ! -x $NODE_PATH ] && exit 0
-[ ! -x $NPM_PATH ] && exit 0
-
+$(which node &>/dev/null) && [ $? -ne 0 ] && return
+$(which npm &>/dev/null) && [ $? -ne 0 ] && return
 
 export PATH="/usr/local/share/npm/bin:$PATH"
