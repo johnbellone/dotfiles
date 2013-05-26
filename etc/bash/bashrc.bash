@@ -1,18 +1,16 @@
 # -*- mode: sh -*-
 # ~/.bashrc: executed by bash(1) for non-login shells.
-# see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
-# for examples
 
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
 
-# don't put duplicate lines or lines starting with space in the history.
-# See bash(1) for more options
-HISTCONTROL=ignoreboth
-
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
-HISTSIZE=1000000
-HISTFILESIZE=2000000
+# don't put duplicate lines or lines starting with space in the history.
+export HISTIGNORE="&:pwd:ls:sl:l:ll:la:lh:h:history"
+export HISTSIZE=10000
+export HISTFILESIZE=10000
+export HISTCONTROL=ignoreboth
+export HISTTIMEFORMAT='%F %T '
 
 # make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
@@ -34,4 +32,7 @@ fi
 [ -d $HOME/homebrew/bin ] && PATH="$HOME/homebrew/bin:$PATH"
 [ -d $HOME/bin ] && PATH="$HOME/bin:$PATH"
 
+export EDITOR="emacs -nw"
+export PAGER="less"
+export LESS="-R -M"
 export PATH
