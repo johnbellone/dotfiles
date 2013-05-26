@@ -8,7 +8,7 @@ case $OSTYPE in
     Linux)
         alias ls='ls --color=auto'
         ;;
-    darwin10.0)
+    darwin12|darwin10.0)
         export CLICOLOR=1
         export LSCOLORS=gxBxhxDxfxhxhxhxhxcxcx
         ;;
@@ -34,6 +34,7 @@ alias rc="be rails console"
 alias pr="git pull --rebase"
 alias prp="pr && git push"
 alias d="git diff"
+alias st="git st"
 
 # Make sure that my grep is colorized.
 alias grep='grep --color=auto'
