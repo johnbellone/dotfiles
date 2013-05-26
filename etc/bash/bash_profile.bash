@@ -2,10 +2,10 @@
 # ~/.bash_profile
 
 # Source all of additional files if they're sitting around.
+[ -f $HOME/.bashrc ] && source $HOME/.bashrc
 [ -f $HOME/.javarc ] && source $HOME/.javarc
 [ -f $HOME/.rubyrc ] && source $HOME/.rubyrc
 [ -f $HOME/.jsrc ] && source $HOME/.jsrc
-[ -f $HOME/.bashrc ] && source $HOME/.bashrc
 
 # Print out some diagnostics on a login shell.
 [ -f $RUBY_PATH ] && echo "$(ruby --version)"

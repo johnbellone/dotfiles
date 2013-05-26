@@ -33,7 +33,5 @@ fi
 
 [ -d $HOME/homebrew/bin ] && PATH="$HOME/homebrew/bin:$PATH"
 [ -d $HOME/bin ] && PATH="$HOME/bin:$PATH"
-[ -d $HOME/.rbenv ] && eval "$(rbenv init -)"
-[ ! -z "$RBENV_VERSION" ] && rbenv shell $RBENV_VERSION
 
 export PATH

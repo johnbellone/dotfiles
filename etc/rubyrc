@@ -1,0 +1,11 @@
+# -*- mode: sh -*-
+# ~/.rubyrc
+
+export RBENV_VERSION=${RBENV_VERSION:=1.9.3-p392}
+
+[ ! -d $HOME/.rbenv ] && exit 0
+PATH="$HOME/.rbenv/bin:$PATH"
+
+eval "$(rbenv init -)"
+
+rbenv shell $RBENV_VERSION
