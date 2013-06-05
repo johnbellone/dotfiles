@@ -17,9 +17,9 @@ case $OSTYPE in
 esac
 
 # Directory listing made easy.
-alias ll='ls -alF'
-alias la='ls -A'
-alias l='ls -CF'
+alias ll='ls -AclhsF'
+alias la='ls -Ah'
+alias l='ls -CFh'
 
 # Rails specific stuff.
 alias b="bundle"
