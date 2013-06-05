@@ -38,4 +38,9 @@ export HOMEBIN_PATH=$HOME/bin
 export EDITOR="emacs -nw"
 export PAGER="less"
 export LESS="-R -M"
+
+[ -f $HOME/.javarc ] && source $HOME/.javarc
+[ -f $HOME/.rubyrc ] && source $HOME/.rubyrc
+[ -f $HOME/.jsrc ] && source $HOME/.jsrc
+
 export PATH
