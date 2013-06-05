@@ -10,7 +10,7 @@ export RBENV_PATH=$HOME/.rbenv/shims
 
 # Default to 1.9.3 but take into account versions that may
 # have been set on the local machine.
-export RBENV_VERSION=${RBENV_VERSION:=1.9.3-p392}
+export RBENV_VERSION=${RBENV_VERSION:=2.0.0-p195}
 
 export PATH="$RBENV_PATH:$PATH"
 
