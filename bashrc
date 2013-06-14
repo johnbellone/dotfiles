@@ -29,18 +29,8 @@ fi
 [ -f ~/.bash_aliases ] && source ~/.bash_aliases
 [ -f ~/.bash_localrc ] && source ~/.bash_localrc
 
-export HOMEBREW_PATH=$HOME/homebrew/bin
-export HOMEBIN_PATH=$HOME/bin
-
-[ -d $HOMEBREW_PATH ] && PATH="$HOMEBREW_PATH:$PATH"
-[ -d $HOMEBIN_PATH ] && PATH="$HOMEBIN_PATH:$PATH"
-
 export EDITOR="emacs -nw"
 export PAGER="less"
 export LESS="-R -M"
-
-[ -f $HOME/.javarc ] && source $HOME/.javarc
-[ -f $HOME/.rubyrc ] && source $HOME/.rubyrc
-[ -f $HOME/.jsrc ] && source $HOME/.jsrc
 
 export PATH
