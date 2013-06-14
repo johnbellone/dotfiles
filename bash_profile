@@ -1,11 +1,17 @@
 # -*- mode: sh -*-
 # ~/.bash_profile
 
+BOXEN_PATH=/opt/boxen
+
 # Print out useful information about this machine.
 echo "uptime $(uptime)"
 
 # Source all of additional files if they're sitting around.
 [ -f $HOME/.bashrc ] && source $HOME/.bashrc
+
+# If this machine has been provisioned with Boxen make sure to
+# include that environment properly.
+[ -f $BOXEN_PATH/env.sh ] && source $BOXEN_PATH/env.sh
 
 # Print out some diagnostics on a login shell.
 [ -f $RUBY_PATH ] && echo "$(ruby --version)"
