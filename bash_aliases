@@ -44,5 +44,4 @@ alias egrep='egrep --color=auto'
 
 # Some additional utility aliases.
 alias stalk="ps auxx | grep -v 'grep --color=auto -i' | grep -i"
-alias df='df | column -t'
 alias du='du -H'
