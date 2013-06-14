@@ -2,6 +2,7 @@
   editor = emacs -nw
   quotepath = false
   sharedRepository = all
+  excludesfile = /opt/boxen/config/git/gitignore
 [color]
   ui = true
 [color "branch"]
@@ -42,3 +43,12 @@
   lineNumber = true
 [rerere]
   enabled = true
+[user]
+	email = john.bellone.jr@gmail.com
+	name = John Bellone
+
+[credential]
+helper = /opt/boxen/bin/boxen-git-credential
+
+[hub]
+protocol = https
