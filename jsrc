@@ -1,9 +1,0 @@
-# -*- mode: sh -*-
-# ~/.jsrc
-[ ! -z $DEBUG ] && set -x
-
-# Exit out immediately if binaries are not available.
-$(which node &>/dev/null) && [ $? -ne 0 ] && return
-$(which npm &>/dev/null) && [ $? -ne 0 ] && return
-
-export PATH="/usr/local/share/npm/bin:$PATH"
