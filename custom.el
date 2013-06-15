@@ -1,1 +1,1 @@
-(add-to-list 'load-path "~/dotfiles/etc/emacs")
+(add-to-list 'load-path "~/.my/dotfiles/emacs")
