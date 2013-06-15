@@ -14,6 +14,6 @@ echo "uptime $(uptime)"
 [ -f $BOXEN_PATH/env.sh ] && source $BOXEN_PATH/env.sh
 
 # Print out some diagnostics on a login shell.
-[ -f $RUBY_PATH ] && echo "$(ruby --version)"
-[ -f $JAVA_PATH ] && echo "$(java -version 2>&1 | head -n2 | tail -n1)"
-[ -f $NODE_PATH ] && [ -f $NPM_PATH ] && echo "nodejs $(node --version) npm $(npm --version)"
+[ -d $RBENV_ROOT ] && echo "$(ruby --version)"
+[ -d $JAVA_HOME ] && echo "$(java -version 2>&1 | head -n2 | tail -n1)"
+[ -d $NODENV_ROOT ] && echo "nodejs $(node --version) npm $(npm --version)"
