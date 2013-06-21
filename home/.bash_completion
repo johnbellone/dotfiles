@@ -1,0 +1,7 @@
+# -*- mode: sh -*-
+# ~/.bash_completion
+
+BASH_COMPLETION_PATH=$HOME/.bash-completion.d
+[ ! -d $BASH_COMPLETION_PATH ] && return 1
+
+[ -f $BASH_COMPLETION_PATH/git-flow-completion ] && source $BASH_COMPELTION_PATH/git-flow-completion
