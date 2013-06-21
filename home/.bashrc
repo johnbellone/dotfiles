@@ -1,6 +1,10 @@
 # -*- mode: sh -*-
 # ~/.bashrc: executed by bash(1) for non-login shells.
 
+# Source JavaScript and Ruby environments.
+[ -f ~/.jsrc ] && source ~/.jsrc
+[ -f ~/.rbrc ] && source ~/.rbrc
+
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
 
@@ -27,9 +31,6 @@ fi
 # ~/.bash_aliases, instead of adding them here directly.
 # See /usr/share/doc/bash-doc/examples in the bash-doc package.
 [ -f ~/.bash_aliases ] && source ~/.bash_aliases
-
-[ -f ~/.jsrc ] && source ~/.jsrc
-[ -f ~/.rbrc ] && source ~/.rbrc
 
 export EDITOR="emacs -nw"
 export PAGER="less"
