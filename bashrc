@@ -29,8 +29,8 @@ fi
 [ -f ~/.bash_aliases ] && source ~/.bash_aliases
 [ -f ~/.bash_localrc ] && source ~/.bash_localrc
 
-[ -e ~/.jsrc ] && source ~/.jsrc
-[ -e ~/.rbrc ] && source ~/.rbrc
+[ -f ~/.jsrc ] && source ~/.jsrc
+[ -f ~/.rbrc ] && source ~/.rbrc
 
 export EDITOR="emacs -nw"
 export PAGER="less"
