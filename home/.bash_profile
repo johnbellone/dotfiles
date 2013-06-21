@@ -8,6 +8,9 @@
 # Source all of additional files if they're sitting around.
 [ -f $HOME/.bashrc ] && source $HOME/.bashrc
 
+# Add bash completion to interactive shells.
+[ -f $HOME/.bash_completion ] && source $HOME/.bash_completion
+
 # Print out useful information about this machine.
 echo "uptime $(uptime)"
 
