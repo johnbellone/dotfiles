@@ -1,47 +1,48 @@
+	# -*- mode: gitconfig -*-
 [core]
-  editor = emacs -nw
-  quotepath = false
-  sharedRepository = all
-  excludesfile = /opt/boxen/config/git/gitignore
+	editor = emacs -nw
+	quotepath = false
+	sharedRepository = all
 [color]
-  ui = true
+	ui = true
 [color "branch"]
-  current = yellow black
-  local = yellow
-  remote = magenta
+	current = yellow black
+	local = yellow
+	remote = magenta
 [color "diff"]
-  meta = yellow bold
-  frag = magenta bold
-  old = red reverse
-  new = green reverse
-  whitespace = white reverse
+	meta = yellow bold
+	frag = magenta bold
+	old = red reverse
+	new = green reverse
+	whitespace = white reverse
 [color "status"]
-  added = yellow
-  changed = green
-  untracked = cyan reverse
-  branch = magenta
+	added = yellow
+	changed = green
+	untracked = cyan reverse
+	branch = magenta
 [diff]
-  renames = true
+	renames = true
 [alias]
-  st = status
-  d = diff
-  co = checkout
-  b = branch
-  dfc = diff --cached
-  gpr = pull --rebase
-  rb = rebase
-  ci = commit
-  co = checkout
-  br = branch
-  cp = cherry-pick
-  cob = checkout -b
-  l = log --oneline
-  lv = log --oneline --pretty
-  ls = log --graph --color --pretty=\"format:%C(yellow)%h%Creset%C(green)%d%Creset %s %Cblue[%aN]%Creset %C(magenta){%cr}%Creset\"
-  la = log --graph --color --pretty=\"format:%C(yellow)%h%Creset%C(green)%d%Creset %s %Cblue[%aN]%Creset %C(magenta){%cr}%Creset\" --all
+	st = status
+	d = diff
+	co = checkout
+	b = branch
+	dfc = diff --cached
+	gpr = pull --rebase
+	rb = rebase
+	ci = commit
+	co = checkout
+	br = branch
+	cp = cherry-pick
+	cob = checkout -b
+	l = log --oneline
+	lv = log --oneline --pretty
+	ls = log --graph --color --pretty=\"format:%C(yellow)%h%Creset%C(green)%d%Creset %s %Cblue[%aN]%Creset %C(magenta){%cr}%Creset\"
+	la = log --graph --color --pretty=\"format:%C(yellow)%h%Creset%C(green)%d%Creset %s %Cblue[%aN]%Creset %C(magenta){%cr}%Creset\" --all
+	pr = pull --rebase
 [grep]
-  lineNumber = true
+	lineNumber = true
 [rerere]
-  enabled = true
+	enabled = true
 [hub]
-protocol = https
+	protocol = https
