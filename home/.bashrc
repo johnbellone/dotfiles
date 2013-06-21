@@ -39,4 +39,4 @@ export PATH
 
 # As the last step execute any local machine specific settings that
 # would need to be available on non-interactive logins.
-[ -f ~/.bash_localrc ] && source ~/.bash_localrc
+[ -f ~/.bash_login ] && source ~/.bash_login
