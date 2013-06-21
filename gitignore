@@ -3,3 +3,6 @@
 /tmp
 /.DS_Store
 /log
+.vagrant
+.bundle
+
