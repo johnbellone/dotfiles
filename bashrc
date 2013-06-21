@@ -27,7 +27,6 @@ fi
 # ~/.bash_aliases, instead of adding them here directly.
 # See /usr/share/doc/bash-doc/examples in the bash-doc package.
 [ -f ~/.bash_aliases ] && source ~/.bash_aliases
-[ -f ~/.bash_localrc ] && source ~/.bash_localrc
 
 [ -f ~/.jsrc ] && source ~/.jsrc
 [ -f ~/.rbrc ] && source ~/.rbrc
@@ -37,3 +36,7 @@ export PAGER="less"
 export LESS="-R -M"
 
 export PATH
+
+# As the last step execute any local machine specific settings that
+# would need to be available on non-interactive logins.
+[ -f ~/.bash_localrc ] && source ~/.bash_localrc
