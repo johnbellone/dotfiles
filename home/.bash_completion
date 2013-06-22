@@ -1,10 +1,5 @@
 # -*- mode: sh -*-
 # ~/.bash_completion
 
-[ `which brew &>/dev/null` ] && HOMEBREW_PATH=$(brew --prefix)
-LOCAL_PATH=${HOMEBREW_PATH:-/usr/local}
-
-[ ! -z $LOCAL_PATH ] && {
-    # If the system has bash-completion installed attempt to source it.
-    [ -f $LOCAL_PATH/etc/bash_completion ] && source $LOCAL_PATH/etc/bash_completion
-}
+# Load up all the files that are stored locally.
+for file in $HOME/.bash_completion.d/*; do source $file; done

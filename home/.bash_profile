@@ -8,8 +8,12 @@
 # Source all of additional files if they're sitting around.
 [ -f $HOME/.bashrc ] && source $HOME/.bashrc
 
-# Source everything for automatic completion in Bash shell.
-[ -f $HOME/.bash_completion ] && source $HOME/.bash_completion
+# Figure out the proper path for all optional software.
+[ `which brew &>/dev/null` ] && HOMEBREW_PATH=$(brew --prefix)
+OPT_PATH=${HOMEBREW_PATH:-/usr/local}
+
+# If the system has bash-completion installed attempt to source it.
+[ -f $OPT_PATH/etc/bash_completion ] && source $OPT_PATH/etc/bash_completion
 
 # Print out useful information about this machine.
 echo "uptime $(uptime)"
