@@ -3,6 +3,8 @@
 	editor = emacs -nw
 	quotepath = false
 	sharedRepository = all
+[push]
+	default = matching	
 [color]
 	ui = true
 [color "branch"]
