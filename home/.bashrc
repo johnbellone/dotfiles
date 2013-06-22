@@ -1,9 +1,9 @@
 # -*- mode: sh -*-
 # ~/.bashrc: executed by bash(1) for non-login shells.
 
-# Source JavaScript and Ruby environments.
-[ -f ~/.jsrc ] && source ~/.jsrc
-[ -f ~/.rbrc ] && source ~/.rbrc
+# As the last step execute any local machine specific settings that
+# would need to be available on non-interactive logins.
+[ -f ~/.bash_login ] && source ~/.bash_login
 
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
@@ -37,7 +37,3 @@ export PAGER="less"
 export LESS="-R -M"
 
 export PATH
-
-# As the last step execute any local machine specific settings that
-# would need to be available on non-interactive logins.
-[ -f ~/.bash_login ] && source ~/.bash_login
