@@ -1,7 +1,10 @@
 # -*- mode: sh -*-
 # ~/.bash_completion
 
-BASH_COMPLETION_PATH=$HOME/.bash-completion.d
-[ ! -d $BASH_COMPLETION_PATH ] && return 1
+[ `which brew &>/dev/null` ] && HOMEBREW_PATH=$(brew --prefix)
+LOCAL_PATH=${HOMEBREW_PATH:-/usr/local}
 
-[ -f $BASH_COMPLETION_PATH/git-flow-completion ] && source $BASH_COMPELTION_PATH/git-flow-completion
+[ ! -z $LOCAL_PATH ] && {
+    # If the system has bash-completion installed attempt to source it.
+    [ -f $LOCAL_PATH/etc/bash_completion ] && source $LOCAL_PATH/etc/bash_completion
+}
