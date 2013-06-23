@@ -32,7 +32,7 @@ fi
 # See /usr/share/doc/bash-doc/examples in the bash-doc package.
 [ -f ~/.bash_aliases ] && source ~/.bash_aliases
 
-export EDITOR="emacs -nw"
+export EDITOR="emacsclient -t"
 export PAGER="less"
 export LESS="-R -M"
 
