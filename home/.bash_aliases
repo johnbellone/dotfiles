@@ -5,7 +5,8 @@
 # a different toolchain. At some point it'd be nice to actually have
 # the GNU tools for everything.
 case $OSTYPE in
-    Linux)
+    Linux|linux-gnu)
+        export LS_COLORS='di=38;5;108:fi=00:*svn-commit.tmp=31:ln=38;5;116:ex=38;5;186'
         alias ls='ls --color=auto'
         ;;
     darwin12|darwin10.0)
@@ -37,6 +38,9 @@ alias prp="pr && git push"
 alias d="git diff"
 alias st="git st"
 alias k="kill -9"
+
+alias em='emacs -nw'
+alias et='emacsclient -t'
 
 # Make sure that my grep is colorized.
 alias grep='grep --color=auto'
