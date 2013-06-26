@@ -3,7 +3,7 @@
 
 # As the last step execute any local machine specific settings that
 # would need to be available on non-interactive logins.
-[ -f ~/.bash_login ] && source ~/.bash_login
+[ -f $HOME/.bash_login ] && source $HOME/.bash_login
 
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
@@ -19,8 +19,6 @@ export HISTTIMEFORMAT='%F %T '
 # make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 
-PS1="\r\n\[\e[38;5;208m\] \t \[\e[1;34m\]\H\[\e[0;37m\]:\[\e[1;35m\]\W \[\e[1;30m\]$ \[\e[0m\]"
-
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
@@ -30,9 +28,9 @@ fi
 # You may want to put all your additions into a separate file like
 # ~/.bash_aliases, instead of adding them here directly.
 # See /usr/share/doc/bash-doc/examples in the bash-doc package.
-[ -f ~/.bash_aliases ] && source ~/.bash_aliases
+[ -f $HOME/.bash_aliases ] && source $HOME/.bash_aliases
 
-export EDITOR="emacsclient -t"
+export EDITOR="emacs"
 export PAGER="less"
 export LESS="-R -M"
 
