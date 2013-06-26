@@ -1,0 +1,19 @@
+# -*- mode: sh -*-
+# ~/.bash_login - executed for all shells
+
+[ `which brew &>/dev/null` ] && HOMEBREW_PATH=$(brew --prefix)
+[ ! -z $HOMEBREW_PATH ] && {
+    # If the system has Homebrew installed we should attempt to start
+    # using the bash-completion module.
+    [ -f $HOMEBREW_PATH/etc/bash_completion] && \
+        source $HOMEBREW_PATH/etc/bash_completion
+    # Add GNU core utilities to PATH.
+    [ -d $HOMEBREW_PATH/opt/coreutils ] && \
+        PATH="$HOMEBREW_PATH/opt/coreutils/libexec/gnubin:$PATH"
+}
+
+# Source JavaScript and Ruby environments if they exist.
+[ -f $HOME/.jsrc ] && source $HOME/.jsrc
+[ -f $HOME/.rbrc ] && source $HOME/.rbrc
+
+export PATH
