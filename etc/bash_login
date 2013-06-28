@@ -1,15 +1,10 @@
 # -*- mode: sh -*-
 # ~/.bash_login - executed for all shells
 
-[ `which brew &>/dev/null` ] && HOMEBREW_PATH=$(brew --prefix)
-[ ! -z $HOMEBREW_PATH ] && {
-    # If the system has Homebrew installed we should attempt to start
-    # using the bash-completion module.
-    [ -f $HOMEBREW_PATH/etc/bash_completion] && \
-        source $HOMEBREW_PATH/etc/bash_completion
+[ ! -z $HOMEBREW_PATH ] && [ -d $HOMEBREW_PATH/opt/coreutils ] && {
     # Add GNU core utilities to PATH.
-    [ -d $HOMEBREW_PATH/opt/coreutils ] && \
-        PATH="$HOMEBREW_PATH/opt/coreutils/libexec/gnubin:$PATH"
+    PATH="$HOMEBREW_PATH/opt/coreutils/libexec/gnubin:$PATH"
+    MANPATH="$HOMEBREW_PATH/opt/coreutils/libexec/gnuman:$MANPATH"
 }
 
 # Source JavaScript and Ruby environments if they exist.
@@ -20,4 +15,4 @@
 # Just assume that not all machines may be using the GNU coreutils.
 alias ls='ls --color=auto'
 
-export PATH
+export PATH MANPATH

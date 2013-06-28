@@ -5,12 +5,12 @@
 # be loaded up in an interactive shell.
 [ -f $HOME/.profile ] && source $HOME/.profile
 
-# Source all of additional files if they're sitting around.
-[ -f $HOME/.bashrc ] && source $HOME/.bashrc
-
 # Figure out the proper path for all optional software.
 [ `which brew &>/dev/null` ] && HOMEBREW_PATH=$(brew --prefix)
 OPT_PATH=${HOMEBREW_PATH:-/usr/local}
+
+# Source all of additional files if they're sitting around.
+[ -f $HOME/.bashrc ] && source $HOME/.bashrc
 
 # If the system has bash-completion installed attempt to source it.
 [ -f $OPT_PATH/etc/bash_completion ] && source $OPT_PATH/etc/bash_completion
