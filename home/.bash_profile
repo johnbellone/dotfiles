@@ -22,5 +22,6 @@ echo "uptime $(uptime)"
 [ `which ruby` ] && echo "$(ruby --version)"
 [ `which java` ] && echo "$(java -version 2>&1 | head -n2 | tail -n1)"
 [ `which node` ] && echo "nodejs $(node --version) npm $(npm --version)"
+[ `which go` ] && echo "$(go version)"
 
 export PS1="\r\n\[\e[38;5;208m\] \t \[\e[38;5;187m\]\e[38;5;$1m\]\u@\h\e[m\]\[\e[38;5;174m\] \w \[\e[1;30m\]$ \[\e[m\]"
