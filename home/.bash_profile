@@ -6,7 +6,7 @@
 [ -f $HOME/.profile ] && source $HOME/.profile
 
 # Figure out the proper path for all optional software.
-[ `which brew &>/dev/null` ] && HOMEBREW_PATH=$(brew --prefix)
+[ `which brew 2>/dev/null` ] && HOMEBREW_PATH=$(brew --prefix)
 OPT_PATH=${HOMEBREW_PATH:-/usr/local}
 
 # Source all of additional files if they're sitting around.
@@ -19,9 +19,9 @@ OPT_PATH=${HOMEBREW_PATH:-/usr/local}
 echo "uptime $(uptime)"
 
 # Print out some diagnostics on a login shell.
-[ `which ruby &>/dev/null` ] && echo "$(ruby --version)"
-[ `which java &>/dev/null` ] && echo "$(java -version 2>&1 | head -n2 | tail -n1)"
-[ `which node &>/dev/null` ] && echo "nodejs $(node --version) npm $(npm --version)"
-[ `which go &>/dev/null` ] && echo "$(go version)"
+[ `which ruby 2>/dev/null` ] && echo "$(ruby --version)"
+[ `which java 2>/dev/null` ] && echo "$(java -version 2>&1 | head -n2 | tail -n1)"
+[ `which node 2>/dev/null` ] && echo "nodejs $(node --version) npm $(npm --version)"
+[ `which go 2>/dev/null` ] && echo "$(go version)"
 
 export PS1="\r\n\[\e[38;5;208m\] \t \[\e[38;5;187m\]\e[38;5;$1m\]\u@\h\e[m\]\[\e[38;5;174m\] \w \[\e[1;30m\]$ \[\e[m\]"
