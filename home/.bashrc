@@ -1,6 +1,9 @@
 # -*- mode: sh -*-
 # ~/.bashrc: executed by bash(1) for non-login shells.
 
+# Alias definitions.
+[ -f $HOME/.bash_aliases ] && source $HOME/.bash_aliases
+
 # As the last step execute any local machine specific settings that
 # would need to be available on non-interactive logins.
 [ -f $HOME/.bash_login ] && source $HOME/.bash_login
@@ -23,12 +26,6 @@ export HISTTIMEFORMAT='%F %T '
 if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
 fi
-
-# Alias definitions.
-# You may want to put all your additions into a separate file like
-# ~/.bash_aliases, instead of adding them here directly.
-# See /usr/share/doc/bash-doc/examples in the bash-doc package.
-[ -f $HOME/.bash_aliases ] && source $HOME/.bash_aliases
 
 export EDITOR="emacs"
 export PAGER="less"
