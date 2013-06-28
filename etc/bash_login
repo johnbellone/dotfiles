@@ -15,5 +15,9 @@
 # Source JavaScript and Ruby environments if they exist.
 [ -f $HOME/.jsrc ] && source $HOME/.jsrc
 [ -f $HOME/.rbrc ] && source $HOME/.rbrc
+[ -f $HOME/.gorc ] && source $HOME/.gorc
+
+# Just assume that not all machines may be using the GNU coreutils.
+alias ls='ls --color=auto'
 
 export PATH
