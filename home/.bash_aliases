@@ -1,21 +1,10 @@
 # -*- mode: sh -*-
 # ~/.bash_aliases
 
-# NOTE: This is mainly due to the fact that BSD (Mac OS X) ships with
-# a different toolchain. At some point it'd be nice to actually have
-# the GNU tools for everything.
-case $OSTYPE in
-    Linux|linux-gnu)
-        export LS_COLORS='di=38;5;108:fi=00:*svn-commit.tmp=31:ln=38;5;116:ex=38;5;186'
-        alias ls='ls --color=auto'
-        ;;
-    darwin12|darwin10.0)
-        export CLICOLOR=1
-        export LSCOLORS=gxBxhxDxfxhxhxhxhxcxcx
-        ;;
-    *)
-        ;;
-esac
+# For the most part I install GNU coreutils on most of my setups.
+export CLICOLOR=1
+export LSCOLORS=gxBxhxDxfxhxhxhxhxcxcx
+export LS_COLORS='di=38;5;108:fi=00:*svn-commit.tmp=31:ln=38;5;116:ex=38;5;186'
 
 # Directory listing made easy.
 alias ll='ls -AclhsF'
