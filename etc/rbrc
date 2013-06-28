@@ -1,0 +1,7 @@
+#!/usr/bin/env bash -e
+# ~/.rbrc
+[ -z $DEBUG ] || set -x
+[ -d $HOME/.rbenv ] || return
+export RBENV_PATH=$HOME/.rbenv
+export PATH=$RBENV_PATH/bin:$PATH
+eval "$(rbenv init -)"

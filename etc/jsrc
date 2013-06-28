@@ -1,0 +1,7 @@
+#!/usr/bin/env bash -e
+# ~/.jsrc
+[ -z $DEBUG ] || set -x
+[ -d $HOME/.nodenv ] || return
+export NODENV_PATH=$HOME/.nodenv
+export PATH=$NODENV_PATH/bin:$PATH
+eval "$(nodenv init -)"
