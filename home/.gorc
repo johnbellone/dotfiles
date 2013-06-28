@@ -2,6 +2,9 @@
 # ~/.gorc
 [ -z $DEBUG ] || set -x
 
+export GOPATH=$HOME/.go
+mkdir -p $GOPATH
+
 # Search several directories here just in case I place it in some odd spot.
 [ -d /usr/local/go ] && export GOROOT=/usr/local/go
 [ -d /opt/local/go ] && export GOROOT=/opt/local/go
