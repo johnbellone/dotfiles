@@ -3,11 +3,7 @@
 [ -z $DEBUG ] || set -x
 
 # Search several directories here just in case I place it in some odd spot.
-[ -d /usr/local/go ] && GOPATH=/usr/local/go
-[ -d /opt/local/go ] && GOPATH=/opt/local/go
+[ -d /usr/local/go ] && export GOROOT=/usr/local/go
+[ -d /opt/local/go ] && export GOROOT=/opt/local/go
 
-# Exit gracefully if we were not able to find 'go' on this system.
-[ -z $GOPATH ] && return
-
-export PATH=$GOPATH/bin:$PATH
-export GOPATH
+[ -z $GOROOT ] || export PATH=$GOROOT/bin:$PATH
