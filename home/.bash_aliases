@@ -30,6 +30,7 @@ alias k="kill -9"
 
 alias em='emacs -nw'
 alias et='emacsclient -t'
+alias ec='emacsclient -t'
 
 # Make sure that my grep is colorized.
 alias grep='grep --color=auto'
