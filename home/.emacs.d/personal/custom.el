@@ -1,5 +1,9 @@
+
+;; Give me the full screen without any menu or toolbars.
 (tool-bar-mode -1)
 (menu-bar-mode -1)
+
+;; Setup syntax highlighting for files.
 (add-to-list 'auto-mode-alist '("\\Capfile$" . enh-ruby-mode))
 (add-to-list 'auto-mode-alist '("\\Cheffile$" . enh-ruby-mode))
 (add-to-list 'auto-mode-alist '("\\Godfile$" . enh-ruby-mode))
@@ -24,13 +28,15 @@
    magit-gh-pulls magit-push-remote nginx-mode flymake-ruby
    flymake-json flymake-yaml ruby-end ruby-block))
 
+(setq enh-ruby-program "/Users/jbellone/.rbenv/shims/ruby")
+(setq enh-ruby-bounce-deep-indent 1)
+
 (add-hook 'enh-ruby-mode-hook
           (lambda ()
             (yard-mode)
             (fic-mode)
             (flymake-mode)
             (ruby-end-mode)
-            (ruby-block-mode)
             (ruby-interpolation-mode)))
 
 (custom-set-variables
