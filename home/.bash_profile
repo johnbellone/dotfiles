@@ -1,6 +1,11 @@
 # -*- mode: sh -*-
 # ~/.bash_profile
 
+# HACK: Because how rbenv (and I assume nodenv) shims work the versions were
+# being screwed up because how tmux launches subshells. This resets the PATH
+# so that we avoid duplicates.
+[ -z "$TMUX" ] || export PATH=/usr/local/bin:/usr/bin:/bin
+
 # Source the local profile for any specific changes that should only
 # be loaded up in an interactive shell.
 [ -f $HOME/.profile ] && source $HOME/.profile
