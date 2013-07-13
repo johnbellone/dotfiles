@@ -1,4 +1,3 @@
-
 ;; Give me the full screen without any menu or toolbars.
 (tool-bar-mode -1)
 (menu-bar-mode -1)
@@ -35,10 +34,10 @@
             (fic-mode)
             (flymake-mode)
             (ruby-end-mode)
+            (robe-mode)
             (ruby-interpolation-mode)))
 
-(custom-set-variables
- '(fic-highlighted-words (quote ("FIXME" "TODO" "BUG" "KLUDGE" "NOTE"))))
+(push 'company-robe company-backends)
 
 (powerline-default-theme)
 
