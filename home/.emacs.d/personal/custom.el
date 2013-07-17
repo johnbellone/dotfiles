@@ -35,6 +35,7 @@
 ;; lazy initialize everything.  Where it doesn't do that I'll just load
 ;; them up myself (see below).
 (prelude-ensure-module-deps '(use-package))
+(require 'use-package)
 
 ;; Give me the full screen without any menu or toolbars.
 (tool-bar-mode -1)
@@ -98,6 +99,11 @@
     (use-package ruby-hash-syntax)
     (use-package ruby-tools)
     (use-package rubocop)
+    ;; Use the rbenv shim instead of 1.8 Ruby.
+    (defvar rbenv-ruby-shim (rbenv--expand-path "shims" "ruby")) 
+    (rbenv-use-global)                                                                                      
+    (global-rbenv-mode)
+    (setq enh-ruby-program (describe-variable 'rbenv-ruby-shim))
     ;; Add files to the global font-lock list for this mode.
     (add-to-list 'auto-mode-alist '("\\Capfile$" . enh-ruby-mode))
     (add-to-list 'auto-mode-alist '("\\Cheffile$" . enh-ruby-mode))
