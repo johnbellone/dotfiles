@@ -41,7 +41,12 @@
 (menu-bar-mode -1)
 
 ;; Required packages that I always want loaded up in my environment.
-(use-package dired+ :ensure)
+(use-package dired+
+  :ensure
+  :config
+  (progn
+    (use-package dired-details)
+    (use-package dired-details+)))
 (use-package diminish :ensure)
 (use-package fic-mode :ensure)
 (use-package flymake-mode :ensure)
@@ -49,16 +54,36 @@
 (use-package yaml-mode :ensure)
 
 ;; Packages that should be loaded up on the first initialization.
-(use-package csharp-mode :ensure)
-(use-package crontab-mode :ensure)
+(use-package csharp-mode)
+(use-package crontab-mode)
+(use-package bitly)
+(use-package emamux)
+(use-package magit-gh-pulls)
+(use-package google-c-style)
+(use-package google-this)
+(use-package markdown-mode
+  :config
+  (progn
+    (use-package markdown-mode+)))
+(use-package magit
+  :config
+  (progn
+    (use-package magithub)))
+(use-package coffee-mode
+  :mode ("\\.coffee$" . coffee-mode)
+  :config
+  (progn
+    (use-package flymake-coffee)))
 (use-package js3-mode
   :mode ("\\.js$" . js3-mode)
   :config
   (progn
     (add-to-list 'auto-mode-alist '("\\.json$" . js3-mode))
     (use-package flymake-json)))
-(use-package magit-gh-pulls :ensure)
-(use-package google-c-style :ensure)
+(use-package ack
+  :config
+  (progn
+    (use-package ack-menu)))
 (use-package enh-ruby-mode
   :mode ("\\.rb$" . enh-ruby-mode)
   :diminish enh-ruby-mode
@@ -98,6 +123,11 @@
   :mode ("\\.go$" . go-mode)
   :config
   (progn
+    (use-package flymake-go)
+    (use-package go-autocomplete)
+    (use-package go-eldoc)
+    (use-package go-play)
+    (use-package go-snippets)
     ;; Setup the hook for the mode (turning on minor modes, etc).
     (add-hook 'go-mode-hook
               (lambda ()
