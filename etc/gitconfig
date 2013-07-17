@@ -1,6 +1,6 @@
 # -*- mode: gitconfig -*-
 [core]
-	editor = emacs -nw
+	editor = emacsclient -t
 	quotepath = false
 	sharedRepository = all
 [push]
