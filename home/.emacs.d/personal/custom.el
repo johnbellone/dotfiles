@@ -46,7 +46,7 @@
   :config
   (progn
     (use-package dired-details)
-    (use-package dired-details+)))
+    (use-package dired-details+)) :ensure)
 (use-package diminish :ensure)
 (use-package fic-mode :ensure)
 (use-package flymake-mode :ensure)
