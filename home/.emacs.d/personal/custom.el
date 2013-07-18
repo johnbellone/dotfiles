@@ -43,7 +43,6 @@
 
 ;; Required packages that I always want loaded up in my environment.
 (use-package dired+
-  :ensure
   :config
   (progn
     (use-package dired-details)
@@ -100,8 +99,8 @@
     (use-package ruby-tools)
     (use-package rubocop)
     ;; Use the rbenv shim instead of 1.8 Ruby.
-    (defvar rbenv-ruby-shim (rbenv--expand-path "shims" "ruby")) 
-    (rbenv-use-global)                                                                                      
+    (defvar rbenv-ruby-shim (rbenv--expand-path "shims" "ruby"))
+    (rbenv-use-global)
     (global-rbenv-mode)
     (setq enh-ruby-program (describe-variable 'rbenv-ruby-shim))
     ;; Add files to the global font-lock list for this mode.
