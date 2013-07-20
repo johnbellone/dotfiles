@@ -52,6 +52,7 @@
 (use-package flymake-mode :ensure)
 (use-package magit-push-remote :ensure)
 (use-package yaml-mode :ensure)
+(use-package flycheck-mode :ensure)
 
 ;; Packages that should be loaded up on the first initialization.
 (use-package csharp-mode)
@@ -93,7 +94,6 @@
     (use-package rbenv)
     (use-package rspec-mode)
     (use-package yard-mode)
-    (use-package ruby-end)
     (use-package ruby-interpolation-mode)
     (use-package ruby-hash-syntax)
     (use-package ruby-tools)
@@ -106,6 +106,8 @@
     ;; Add files to the global font-lock list for this mode.
     (add-to-list 'auto-mode-alist '("\\Capfile$" . enh-ruby-mode))
     (add-to-list 'auto-mode-alist '("\\Cheffile$" . enh-ruby-mode))
+    (add-to-list 'auto-mode-alist '("\\Guardfile$" . enh-ruby-mode))
+    (add-to-list 'auto-mode-alist '("\\Rakefile$" . enh-ruby-mode))
     (add-to-list 'auto-mode-alist '("\\Berksfile$" . enh-ruby-mode))
     (add-to-list 'auto-mode-alist '("\\Godfile$" . enh-ruby-mode))
     (add-to-list 'auto-mode-alist '("\\Gearfile$" . enh-ruby-mode))
@@ -115,14 +117,13 @@
     (add-to-list 'auto-mode-alist '("\\.god$" . enh-ruby-mode))
     (add-to-list 'auto-mode-alist '("\\.rake$" . enh-ruby-mode))
     ;; Setup the hook for the mode (turning on minor modes, etc).
-    (add-hook 'enh-ruby-mode
+    (add-hook 'enh-ruby-mode-hook
               (lambda ()
                 (setq enh-ruby-bounce-deep-indent 1)
-                (rbenv-use-global)
                 (yard-mode)
                 (fic-mode)
                 (flymake-mode)
-                (ruby-end-mode)
+                (ruby-electric-mode)
                 (ruby-interpolation-mode)))))
 (use-package go-mode
   :mode ("\\.go$" . go-mode)
@@ -141,6 +142,9 @@
 ;; There are a few variables that I am going to always want to modify.  These
 ;; are generally personalized overrides of the defaults.
 (custom-set-variables
+ '(temporary-file-directory "/tmp")
+ '(flymake-max-parallel-syntax-checks 8)
+ '(flymake-run-in-place nil)
  '(legalese-default-author "John Bellone <john.bellone.jr@gmail.com>")
  '(legalese-default-license 'mit))
 
