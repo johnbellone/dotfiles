@@ -138,6 +138,8 @@
               (lambda ()
                 (add-hook 'before-save-hook 'gofmt-before-save)))))
 
+;; There are a few variables that I am going to always want to modify.  These
+;; are generally personalized overrides of the defaults.
 (custom-set-variables
  '(legalese-default-author "John Bellone <john.bellone.jr@gmail.com>")
  '(legalese-default-license 'mit))
