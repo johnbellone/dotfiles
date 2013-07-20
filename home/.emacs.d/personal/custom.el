@@ -34,6 +34,7 @@
 ;; very least commonly used.  I believe for the most part Prelude will
 ;; lazy initialize everything.  Where it doesn't do that I'll just load
 ;; them up myself (see below).
+(require 'prelude-package)
 (prelude-ensure-module-deps '(use-package))
 (require 'use-package)
 
@@ -86,7 +87,6 @@
   (progn
     (use-package ack-menu)))
 (use-package enh-ruby-mode
-  :mode ("\\.rb$" . enh-ruby-mode)
   :diminish enh-ruby-mode
   :config
   (progn
@@ -104,18 +104,19 @@
     (global-rbenv-mode)
     (setq enh-ruby-program (describe-variable 'rbenv-ruby-shim))
     ;; Add files to the global font-lock list for this mode.
-    (add-to-list 'auto-mode-alist '("\\Capfile$" . enh-ruby-mode))
-    (add-to-list 'auto-mode-alist '("\\Cheffile$" . enh-ruby-mode))
-    (add-to-list 'auto-mode-alist '("\\Guardfile$" . enh-ruby-mode))
-    (add-to-list 'auto-mode-alist '("\\Rakefile$" . enh-ruby-mode))
-    (add-to-list 'auto-mode-alist '("\\Berksfile$" . enh-ruby-mode))
-    (add-to-list 'auto-mode-alist '("\\Godfile$" . enh-ruby-mode))
-    (add-to-list 'auto-mode-alist '("\\Gearfile$" . enh-ruby-mode))
-    (add-to-list 'auto-mode-alist '("\\Procfile$" . enh-ruby-mode))
-    (add-to-list 'auto-mode-alist '("\\Vagrantfile$" . enh-ruby-mode))
-    (add-to-list 'auto-mode-alist '("\\Gemfile$" . enh-ruby-mode))
-    (add-to-list 'auto-mode-alist '("\\.god$" . enh-ruby-mode))
-    (add-to-list 'auto-mode-alist '("\\.rake$" . enh-ruby-mode))
+    (require 'enh-ruby-mode-autoloads)
+    (add-to-list 'auto-mode-alist '("Capfile\\'" . enh-ruby-mode))
+    (add-to-list 'auto-mode-alist '("Cheffile\\'" . enh-ruby-mode))
+    (add-to-list 'auto-mode-alist '("Guardfile\\'" . enh-ruby-mode))
+    (add-to-list 'auto-mode-alist '("Berksfile\\'" . enh-ruby-mode))
+    (add-to-list 'auto-mode-alist '("Godfile\\'" . enh-ruby-mode))
+    (add-to-list 'auto-mode-alist '("Gearfile\\'" . enh-ruby-mode))
+    (add-to-list 'auto-mode-alist '("Vagrantfile\\'" . enh-ruby-mode))
+    (add-to-list 'auto-mode-alist '("Gemfile\\'" . enh-ruby-mode))
+    (add-to-list 'auto-mode-alist '("\\.god\\'" . enh-ruby-mode))
+    (add-to-list 'auto-mode-alist '("\\.rake\\'" . enh-ruby-mode))
+    (add-to-list 'auto-mode-alist '("\\.ru\\'" . enh-ruby-mode))
+    (add-to-list 'auto-mode-alist '("\\.gear\\'" . enh-ruby-mode))
     ;; Setup the hook for the mode (turning on minor modes, etc).
     (add-hook 'enh-ruby-mode-hook
               (lambda ()
