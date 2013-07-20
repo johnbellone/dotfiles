@@ -72,15 +72,16 @@
   (progn
     (use-package magithub)))
 (use-package coffee-mode
-  :mode ("\\.coffee$" . coffee-mode)
+  :mode ("\\.coffee\\'" . coffee-mode)
   :config
   (progn
     (use-package flymake-coffee)))
 (use-package js3-mode
-  :mode ("\\.js$" . js3-mode)
+  :mode ("\\.js\\'" . js3-mode)
   :config
   (progn
     (add-to-list 'auto-mode-alist '("\\.json$" . js3-mode))
+    (use-package flymake-gjshint)
     (use-package flymake-json)))
 (use-package ack
   :config
