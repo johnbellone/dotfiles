@@ -34,7 +34,7 @@
 ;; very least commonly used.  I believe for the most part Prelude will
 ;; lazy initialize everything.  Where it doesn't do that I'll just load
 ;; them up myself (see below).
-(require 'prelude-package)
+;;(require 'prelude-package)
 (prelude-ensure-module-deps '(use-package))
 (require 'use-package)
 
