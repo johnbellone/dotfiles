@@ -34,7 +34,6 @@
 ;; very least commonly used.  I believe for the most part Prelude will
 ;; lazy initialize everything.  Where it doesn't do that I'll just load
 ;; them up myself (see below).
-;;(require 'prelude-package)
 (prelude-ensure-module-deps '(use-package))
 (require 'use-package)
 
@@ -103,7 +102,7 @@
     (defvar rbenv-ruby-shim (rbenv--expand-path "shims" "ruby"))
     (rbenv-use-global)
     (global-rbenv-mode)
-    (setq enh-ruby-program (describe-variable 'rbenv-ruby-shim))
+    ;;(setq enh-ruby-program (describe-variable 'rbenv-ruby-shim))
     ;; Add files to the global font-lock list for this mode.
     (require 'enh-ruby-mode-autoloads)
     (add-to-list 'auto-mode-alist '("Capfile\\'" . enh-ruby-mode))
@@ -125,7 +124,7 @@
                 (yard-mode)
                 (fic-mode)
                 (flymake-mode)
-                (ruby-electric-mode)
+                (ruby-end-mode)
                 (ruby-interpolation-mode)))))
 (use-package go-mode
   :mode ("\\.go$" . go-mode)
