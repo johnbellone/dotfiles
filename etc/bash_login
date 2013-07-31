@@ -15,4 +15,7 @@
 # Just assume that not all machines may be using the GNU coreutils.
 alias ls='ls --color=auto'
 
+### Added by the Heroku Toolbelt
+[ -d /usr/local/heroku ] && PATH="/usr/local/heroku/bin:$PATH"
+
 export PATH MANPATH
