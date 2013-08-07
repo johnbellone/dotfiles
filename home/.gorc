@@ -5,4 +5,6 @@
 GOPATH=${GOPATH:-$HOME/.go}
 [ -d $GOPATH ] || mkdir -p $GOPATH
 
+PATH=$GOPATH/bin:$PATH
+
 export GOPATH PATH
