@@ -2,9 +2,6 @@
 # ~/.gorc
 [ -z $DEBUG ] || set -x
 
-GOPATH=${GOPATH:-$HOME/.go}
-[ -d $GOPATH ] || mkdir -p $GOPATH
-
-PATH=$GOPATH/bin:$PATH
-
-export GOPATH PATH
+export GOROOT=${GOROOT:-$HOME/.go}
+export PATH=$GOROOT/bin:$PATH
+[ -d $GOROOT ] || mkdir -p $GOROOT
