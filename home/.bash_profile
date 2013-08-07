@@ -29,4 +29,5 @@ echo "uptime $(uptime)"
 [ `which node 2>/dev/null` ] && echo "nodejs $(node --version) npm $(npm --version)"
 [ `which go 2>/dev/null` ] && echo "$(go version)"
 
-export PS1="\r\n\[\e[38;5;208m\] \t \[\e[38;5;187m\]\e[38;5;$1m\]\u@\h\e[m\]\[\e[38;5;174m\] \w \[\e[1;30m\]$ \[\e[m\]"
+# Display a custom bash prompt.
+[ -f $HOME/.bash_prompt ] && source $HOME/.bash_prompt
