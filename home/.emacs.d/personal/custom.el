@@ -46,65 +46,75 @@
   :config
   (progn
     (use-package dired-details)
-    (use-package dired-details+)) :ensure)
-(use-package diminish :ensure)
-(use-package fic-mode :ensure)
-(use-package flymake-mode :ensure)
-(use-package magit-push-remote :ensure)
-(use-package yaml-mode :ensure)
-(use-package flycheck-mode :ensure)
+    (use-package dired-details+)))
+(use-package diminish)
+(use-package fic-mode :defer t)
+(use-package flymake-mode :defer t)
+(use-package flycheck-mode :defer t)
+(use-package flyspell-lazy :defer t)
+(use-package yaml-mode
+  :defer t
+  :config
+  (progn
+    (use-package flymake-yaml)))
 
 ;; Packages that should be loaded up on the first initialization.
-(use-package csharp-mode)
-(use-package crontab-mode)
-(use-package bitly)
-(use-package emamux)
-(use-package magit-gh-pulls)
-(use-package google-c-style)
+(use-package csharp-mode :defer t)
+(use-package crontab-mode :defer t)
+(use-package bitly :defer t)
+(use-package emamux :defer t)
+(use-package google-c-style :defer t)
 (use-package google-this)
+(use-package protobuf-mode :defer t)
 (use-package markdown-mode
+  :defer t
   :config
   (progn
     (use-package markdown-mode+)))
+
 (use-package magit
+  :defer t
   :config
   (progn
+    (use-package magit-filenotify)
+    (use-package magit-find-file)
+    (use-package magit-tramp)
+    (use-package magit-push-remote)
+    (use-package magit-gh-pulls)
     (use-package magithub)))
+
 (use-package coffee-mode
+  :defer t
   :mode ("\\.coffee\\'" . coffee-mode)
   :config
   (progn
     (use-package flymake-coffee)))
+
 (use-package js3-mode
-  :mode ("\\.js\\'" . js3-mode)
+  :defer t
+  :mode ("\\.js$" . js3-mode)
   :config
   (progn
-    (add-to-list 'auto-mode-alist '("\\.json$" . js3-mode))
-    (use-package flymake-gjshint)
+    (use-package flymake-gjshint)))
+
+(use-package json-mode
+  :defer t
+  :mode ("\\.json$" . json-mode)
+  :config
+  (progn
     (use-package flymake-json)))
+
 (use-package ack
+  :defer t
   :config
   (progn
     (use-package ack-menu)))
+
 (use-package enh-ruby-mode
-  :diminish enh-ruby-mode
-  :config
+  :defer t
+  :init
   (progn
-    ;; Load up the required packages (minor modes).
-    (use-package rbenv)
-    (use-package rspec-mode)
-    (use-package yard-mode)
-    (use-package ruby-interpolation-mode)
-    (use-package ruby-hash-syntax)
-    (use-package ruby-tools)
-    (use-package rubocop)
-    ;; Use the rbenv shim instead of 1.8 Ruby.
-    (defvar rbenv-ruby-shim (rbenv--expand-path "shims" "ruby"))
-    (rbenv-use-global)
-    (global-rbenv-mode)
-    ;;(setq enh-ruby-program (describe-variable 'rbenv-ruby-shim))
     ;; Add files to the global font-lock list for this mode.
-    (require 'enh-ruby-mode-autoloads)
     (add-to-list 'auto-mode-alist '("Capfile\\'" . enh-ruby-mode))
     (add-to-list 'auto-mode-alist '("Cheffile\\'" . enh-ruby-mode))
     (add-to-list 'auto-mode-alist '("Guardfile\\'" . enh-ruby-mode))
@@ -113,20 +123,47 @@
     (add-to-list 'auto-mode-alist '("Gearfile\\'" . enh-ruby-mode))
     (add-to-list 'auto-mode-alist '("Vagrantfile\\'" . enh-ruby-mode))
     (add-to-list 'auto-mode-alist '("Gemfile\\'" . enh-ruby-mode))
-    (add-to-list 'auto-mode-alist '("\\.god\\'" . enh-ruby-mode))
-    (add-to-list 'auto-mode-alist '("\\.rake\\'" . enh-ruby-mode))
-    (add-to-list 'auto-mode-alist '("\\.ru\\'" . enh-ruby-mode))
-    (add-to-list 'auto-mode-alist '("\\.gear\\'" . enh-ruby-mode))
+    (add-to-list 'auto-mode-alist '("\\.god$" . enh-ruby-mode))
+    (add-to-list 'auto-mode-alist '("\\.rake$" . enh-ruby-mode))
+    (add-to-list 'auto-mode-alist '("\\.ru$" . enh-ruby-mode))
+    (add-to-list 'auto-mode-alist '("\\.gear$" . enh-ruby-mode)))
+  :config
+  (progn
+    (setq enh-ruby-bounce-deep-indent 1)
+
+    ;; Load up the required packages (minor modes).
+    (use-package rbenv
+      :config
+      (progn
+        ;; Use the rbenv shim instead of 1.8 Ruby.
+        (defvar rbenv-ruby-shim (rbenv--expand-path "shims" "ruby"))
+        (setq enh-ruby-program (describe-variable 'rbenv-ruby-shim))
+        (rbenv-use-global)
+        (global-rbenv-mode)))
+
+    (use-package rspec-mode)
+    (use-package yard-mode)
+    (use-package ruby-interpolation)
+    (use-package ruby-hash-syntax)
+    (use-package ruby-tools)
+    (use-package ruby-block)
+    (use-package flymake-coffee)
+    (use-package robe)
+    (use-package rubocop)
+
     ;; Setup the hook for the mode (turning on minor modes, etc).
     (add-hook 'enh-ruby-mode-hook
               (lambda ()
-                (setq enh-ruby-bounce-deep-indent 1)
                 (yard-mode)
                 (fic-mode)
                 (flymake-mode)
                 (ruby-end-mode)
+                (ruby-block)
+                (robe)
                 (ruby-interpolation-mode)))))
+
 (use-package go-mode
+  :defer t
   :mode ("\\.go$" . go-mode)
   :config
   (progn
@@ -135,6 +172,7 @@
     (use-package go-eldoc)
     (use-package go-play)
     (use-package go-snippets)
+
     ;; Setup the hook for the mode (turning on minor modes, etc).
     (add-hook 'go-mode-hook
               (lambda ()
