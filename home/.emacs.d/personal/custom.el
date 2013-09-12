@@ -43,12 +43,23 @@
 
 ;; Required packages that I always want loaded up in my environment.
 (use-package dired+
+  :defer t
   :config
   (progn
     (use-package dired-details)
     (use-package dired-details+)))
+(use-package company
+  :config
+  (progn
+    (use-package company-inf-ruby :defer t)
+    (add-hook 'after-init-hook 'global-company-mode)))
 (use-package diminish)
-(use-package fic-mode :defer t)
+(use-package fic-mode
+  :config
+  (progn
+    (add-hook 'c-mode-hook 'turn-on-fic-mode)
+    (add-hook 'go-mode-hook 'turn-on-fic-mode)
+    (add-hook 'enh-ruby-mode-hook 'turn-on-fic-mode)))
 (use-package flymake-mode :defer t)
 (use-package flycheck-mode :defer t)
 (use-package flyspell-lazy :defer t)
@@ -85,7 +96,7 @@
 
 (use-package coffee-mode
   :defer t
-  :mode ("\\.coffee\\'" . coffee-mode)
+  :mode ("\\.coffee$" . coffee-mode)
   :config
   (progn
     (use-package flymake-coffee)))
@@ -98,6 +109,7 @@
     (use-package flymake-gjshint)))
 
 (use-package json-mode
+  :disabled t
   :defer t
   :mode ("\\.json$" . json-mode)
   :config
@@ -112,6 +124,8 @@
 
 (use-package enh-ruby-mode
   :defer t
+  :mode ("\\.rb$" . enh-ruby-mode)
+  :interpreter ("ruby" . enh-ruby-mode)
   :init
   (progn
     ;; Add files to the global font-lock list for this mode.
@@ -129,8 +143,6 @@
     (add-to-list 'auto-mode-alist '("\\.gear$" . enh-ruby-mode)))
   :config
   (progn
-    (setq enh-ruby-bounce-deep-indent 1)
-
     ;; Load up the required packages (minor modes).
     (use-package rbenv
       :config
@@ -140,27 +152,33 @@
         (setq enh-ruby-program (describe-variable 'rbenv-ruby-shim))
         (rbenv-use-global)
         (global-rbenv-mode)))
-
-    (use-package rspec-mode)
-    (use-package yard-mode)
-    (use-package ruby-interpolation)
-    (use-package ruby-hash-syntax)
+    (use-package rspec-mode
+      :config
+      (add-hook 'dired-mode-hook 'rspec-dired-mode))
+    (use-package yard-mode
+      :config
+      (add-hook 'enh-ruby-mode-hook 'yard-mode))
     (use-package ruby-tools)
-    (use-package ruby-block)
-    (use-package flymake-coffee)
-    (use-package robe)
-    (use-package rubocop)
+    (use-package ruby-block
+      :config
+      (add-hook 'enh-ruby-mode-hook 'ruby-block-mode))
+    (use-package ruby-end
+      :disabled t
+      :config
+      (add-hook 'enh-ruby-mode-hook 'ruby-end))
+    (use-package inf-ruby-mode
+      :config
+      (progn
+        (autoload 'inf-ruby "inf-ruby" "Run an inferior Ruby process" t)
+        (autoload 'inf-ruby-setup-keybindings "inf-ruby" "" t)
+        (eval-after-load 'enh-ruby-mode
+            '(add-hook 'enh-ruby-mode-hook 'inf-ruby-setup-keybindings))))
+    (use-package robe
+      :config
+      (add-hook 'enh-ruby-mode-hook 'robe-mode))
 
-    ;; Setup the hook for the mode (turning on minor modes, etc).
-    (add-hook 'enh-ruby-mode-hook
-              (lambda ()
-                (yard-mode)
-                (fic-mode)
-                (flymake-mode)
-                (ruby-end-mode)
-                (ruby-block)
-                (robe)
-                (ruby-interpolation-mode)))))
+    (setq enh-ruby-bounce-deep-indent 1)
+    (add-hook 'enh-ruby-mode-hook 'flymake-mode)))
 
 (use-package go-mode
   :defer t
@@ -181,6 +199,7 @@
 ;; There are a few variables that I am going to always want to modify.  These
 ;; are generally personalized overrides of the defaults.
 (custom-set-variables
+ '(fic-highlighted-words '("BUG" "TODO" "NOTE" "KLUDGE" "HACK" "FIX" "FIXME"))
  '(temporary-file-directory "/tmp")
  '(flymake-max-parallel-syntax-checks 8)
  '(flymake-run-in-place nil)
