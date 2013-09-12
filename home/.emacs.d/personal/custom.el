@@ -80,15 +80,15 @@
     (use-package markdown-mode+)))
 
 (use-package magit
-  :defer t
   :config
   (progn
-    (use-package magit-filenotify)
+    (use-package magit-filenotify
+      :disabled t)
     (use-package magit-find-file)
     (use-package magit-tramp)
-    (use-package magit-push-remote)
-    (use-package magit-gh-pulls)
-    (use-package magithub)))
+    (use-package magit-push-remote
+      :disabled t)
+    (use-package magit-gh-pulls)))
 
 (use-package coffee-mode
   :defer t
