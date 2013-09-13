@@ -37,10 +37,6 @@
 (prelude-ensure-module-deps '(use-package))
 (require 'use-package)
 
-;; Give me the full screen without any menu or toolbars.
-(tool-bar-mode -1)
-(menu-bar-mode -1)
-
 ;; Required packages that I always want loaded up in my environment.
 (use-package dired+
   :defer t
@@ -122,25 +118,25 @@
   (progn
     (use-package ack-menu)))
 
-(use-package enh-ruby-mode
+(use-package ruby-mode
   :defer t
-  :mode ("\\.rb$" . enh-ruby-mode)
-  :interpreter ("ruby" . enh-ruby-mode)
+  :mode ("\\.rb$" . ruby-mode)
+  :interpreter ("ruby" . ruby-mode)
   :init
   (progn
     ;; Add files to the global font-lock list for this mode.
-    (add-to-list 'auto-mode-alist '("Capfile\\'" . enh-ruby-mode))
-    (add-to-list 'auto-mode-alist '("Cheffile\\'" . enh-ruby-mode))
-    (add-to-list 'auto-mode-alist '("Guardfile\\'" . enh-ruby-mode))
-    (add-to-list 'auto-mode-alist '("Berksfile\\'" . enh-ruby-mode))
-    (add-to-list 'auto-mode-alist '("Godfile\\'" . enh-ruby-mode))
-    (add-to-list 'auto-mode-alist '("Gearfile\\'" . enh-ruby-mode))
-    (add-to-list 'auto-mode-alist '("Vagrantfile\\'" . enh-ruby-mode))
-    (add-to-list 'auto-mode-alist '("Gemfile\\'" . enh-ruby-mode))
-    (add-to-list 'auto-mode-alist '("\\.god$" . enh-ruby-mode))
-    (add-to-list 'auto-mode-alist '("\\.rake$" . enh-ruby-mode))
-    (add-to-list 'auto-mode-alist '("\\.ru$" . enh-ruby-mode))
-    (add-to-list 'auto-mode-alist '("\\.gear$" . enh-ruby-mode)))
+    (add-to-list 'auto-mode-alist '("Capfile\\'" . ruby-mode))
+    (add-to-list 'auto-mode-alist '("Cheffile\\'" . ruby-mode))
+    (add-to-list 'auto-mode-alist '("Guardfile\\'" . ruby-mode))
+    (add-to-list 'auto-mode-alist '("Berksfile\\'" . ruby-mode))
+    (add-to-list 'auto-mode-alist '("Godfile\\'" . ruby-mode))
+    (add-to-list 'auto-mode-alist '("Gearfile\\'" . ruby-mode))
+    (add-to-list 'auto-mode-alist '("Vagrantfile\\'" . ruby-mode))
+    (add-to-list 'auto-mode-alist '("Gemfile\\'" . ruby-mode))
+    (add-to-list 'auto-mode-alist '("\\.god$" . ruby-mode))
+    (add-to-list 'auto-mode-alist '("\\.rake$" . ruby-mode))
+    (add-to-list 'auto-mode-alist '("\\.ru$" . ruby-mode))
+    (add-to-list 'auto-mode-alist '("\\.gear$" . ruby-mode)))
   :config
   (progn
     ;; Load up the required packages (minor modes).
@@ -157,28 +153,26 @@
       (add-hook 'dired-mode-hook 'rspec-dired-mode))
     (use-package yard-mode
       :config
-      (add-hook 'enh-ruby-mode-hook 'yard-mode))
+      (add-hook 'ruby-mode-hook 'yard-mode))
     (use-package ruby-tools)
     (use-package ruby-block
       :config
-      (add-hook 'enh-ruby-mode-hook 'ruby-block-mode))
+      (add-hook 'ruby-mode-hook 'ruby-block-mode))
     (use-package ruby-end
       :disabled t
       :config
-      (add-hook 'enh-ruby-mode-hook 'ruby-end))
+      (add-hook 'ruby-mode-hook 'ruby-end))
     (use-package inf-ruby-mode
       :config
       (progn
         (autoload 'inf-ruby "inf-ruby" "Run an inferior Ruby process" t)
         (autoload 'inf-ruby-setup-keybindings "inf-ruby" "" t)
-        (eval-after-load 'enh-ruby-mode
-            '(add-hook 'enh-ruby-mode-hook 'inf-ruby-setup-keybindings))))
+        (eval-after-load 'ruby-mode
+            '(add-hook 'ruby-mode-hook 'inf-ruby-setup-keybindings))))
     (use-package robe
       :config
-      (add-hook 'enh-ruby-mode-hook 'robe-mode))
-
-    (setq enh-ruby-bounce-deep-indent 1)
-    (add-hook 'enh-ruby-mode-hook 'flymake-mode)))
+      (add-hook 'ruby-mode-hook 'robe-mode))
+    (add-hook 'ruby-mode-hook 'flymake-mode)))
 
 (use-package go-mode
   :defer t
@@ -199,12 +193,22 @@
 ;; There are a few variables that I am going to always want to modify.  These
 ;; are generally personalized overrides of the defaults.
 (custom-set-variables
- '(fic-highlighted-words '("BUG" "TODO" "NOTE" "KLUDGE" "HACK" "FIX" "FIXME"))
- '(temporary-file-directory "/tmp")
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(blink-cursor-mode nil)
+ '(column-number-mode t)
+ '(fic-highlighted-words (quote ("BUG" "TODO" "NOTE" "KLUDGE" "HACK" "FIX" "FIXME")))
  '(flymake-max-parallel-syntax-checks 8)
  '(flymake-run-in-place nil)
  '(legalese-default-author "John Bellone <john.bellone.jr@gmail.com>")
- '(legalese-default-license 'mit))
+ '(legalese-default-license (quote mit))
+ '(menu-bar-mode nil)
+ '(show-paren-mode t)
+ '(size-indication-mode t)
+ '(temporary-file-directory "/tmp")
+ '(tool-bar-mode nil))
 
 (provide 'custom)
 ;;; custom.el ends here
