@@ -2,6 +2,11 @@
 # ~/.gorc
 [ -z $DEBUG ] || set -x
 
-export GOROOT=${GOROOT:-$HOME/.go}
-export PATH=$GOROOT/bin:$PATH
-[ -d $GOROOT ] || mkdir -p $GOROOT
+GOPATH=$HOME/.go
+
+[ -d $GOPATH ] || mkdir -p $GOPATH
+[ `which brew 2>/dev/null` ] && GOROOT=$(brew --prefix go)
+
+PATH=$GOPATH/bin:$GOROOT/bin:$PATH
+
+export GOPATH GOROOT PATH
