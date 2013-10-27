@@ -97,7 +97,7 @@
   (progn
     (use-package flymake-coffee)))
 
-(use-package js3-mode
+(use-package js2-mode
   :defer t
   :mode ("\\.js$" . js3-mode)
   :config
@@ -105,7 +105,6 @@
     (use-package flymake-gjshint)))
 
 (use-package json-mode
-  :disabled t
   :defer t
   :mode ("\\.json$" . json-mode)
   :config
@@ -166,9 +165,7 @@
       :config
       (progn
         (autoload 'inf-ruby "inf-ruby" "Run an inferior Ruby process" t)
-        (autoload 'inf-ruby-setup-keybindings "inf-ruby" "" t)
-        (eval-after-load 'ruby-mode
-            '(add-hook 'ruby-mode-hook 'inf-ruby-setup-keybindings))))
+        (add-hook 'ruby-mode-hook 'inf-ruby-minor-mode)))
     (use-package robe
       :config
       (add-hook 'ruby-mode-hook 'robe-mode))
@@ -179,10 +176,8 @@
   :mode ("\\.go$" . go-mode)
   :config
   (progn
-    (use-package flymake-go)
     (use-package go-autocomplete)
     (use-package go-eldoc)
-    (use-package go-play)
     (use-package go-snippets)
 
     ;; Setup the hook for the mode (turning on minor modes, etc).
@@ -199,16 +194,18 @@
  ;; If there is more than one, they won't work right.
  '(blink-cursor-mode nil)
  '(column-number-mode t)
+ '(custom-safe-themes
+   (quote
+    ("c5207e7b8cc960e08818b95c4b9a0c870d91db3eaf5959dd4eba09098b7f232b" default)))
  '(fic-highlighted-words (quote ("BUG" "TODO" "NOTE" "KLUDGE" "HACK" "FIX" "FIXME")))
- '(flymake-max-parallel-syntax-checks 8)
+ '(flymake-max-parallel-syntax-checks nil)
  '(flymake-run-in-place nil)
  '(legalese-default-author "John Bellone <john.bellone.jr@gmail.com>")
  '(legalese-default-license (quote mit))
  '(menu-bar-mode nil)
  '(show-paren-mode t)
  '(size-indication-mode t)
- '(temporary-file-directory "/tmp")
- '(tool-bar-mode nil))
+ '(temporary-file-directory "/tmp"))
 
 (provide 'custom)
 ;;; custom.el ends here
