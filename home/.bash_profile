@@ -20,6 +20,9 @@ OPT_PATH=${HOMEBREW_PATH:-/usr/local}
 # If the system has bash-completion installed attempt to source it.
 [ -f $OPT_PATH/etc/bash_completion ] && source $OPT_PATH/etc/bash_completion
 
+# If not running interactively, don't do anything
+[ -z "$PS1" ] && return
+
 # Print out useful information about this machine.
 echo "uptime $(uptime)"
 
