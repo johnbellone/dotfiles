@@ -176,7 +176,9 @@
   :mode ("\\.go$" . go-mode)
   :config
   (progn
-    (use-package go-autocomplete)
+    (use-package go-autocomplete
+      :config
+      (add-to-list 'ac-modes 'go-mode))
     (use-package go-eldoc)
     (use-package go-snippets)
 
