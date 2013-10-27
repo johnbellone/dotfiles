@@ -5,4 +5,6 @@
 /log
 .vagrant
 .bundle
+.chaindrive
+.cache
 
