@@ -23,13 +23,14 @@ alias gb="gem build"
 alias sc="script/console"
 alias rc="be rails console"
 alias pr="git pull --rebase"
-alias prp="pr && git push"
+alias rp="pr && git push"
 alias d="git diff"
 alias st="git st"
 alias k="kill -9"
+alias gp='git push'
+alias gf='git fetch --all'
 
 alias em='emacs -nw'
-alias et='emacsclient -t'
 alias ec='emacsclient -t'
 
 # Make sure that my grep is colorized.
