@@ -1,19 +1,17 @@
 # -*- mode: sh -*-
 # ~/.bash_login - executed for all shells
 
-[ ! -z $HOMEBREW_PATH ] && [ -d $HOMEBREW_PATH/opt/coreutils ] && {
+[ -z $GNU_PATH ] || {
     # Add GNU core utilities to PATH.
-    PATH="$HOMEBREW_PATH/opt/coreutils/libexec/gnubin:$PATH"
-    MANPATH="$HOMEBREW_PATH/opt/coreutils/libexec/gnuman:$MANPATH"
+    PATH="$GNU_PATH/opt/coreutils/libexec/gnubin:$PATH"
+    MANPATH="$GNU_PATH/opt/coreutils/libexec/gnuman:$MANPATH"
+    alias ls='ls --color=auto'
 }
 
 # Source JavaScript and Ruby environments if they exist.
 [ -f $HOME/.jsrc ] && source $HOME/.jsrc
 [ -f $HOME/.rbrc ] && source $HOME/.rbrc
 [ -f $HOME/.gorc ] && source $HOME/.gorc
-
-# Just assume that not all machines may be using the GNU coreutils.
-alias ls='ls --color=auto'
 
 ### Added by the Heroku Toolbelt
 [ -d /usr/local/heroku ] && PATH="/usr/local/heroku/bin:$PATH"
