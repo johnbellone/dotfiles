@@ -55,7 +55,7 @@
   (progn
     (add-hook 'c-mode-hook 'turn-on-fic-mode)
     (add-hook 'go-mode-hook 'turn-on-fic-mode)
-    (add-hook 'enh-ruby-mode-hook 'turn-on-fic-mode)))
+    (add-hook 'ruby-mode-hook 'turn-on-fic-mode)))
 (use-package flymake-mode :defer t)
 (use-package flycheck-mode :defer t)
 (use-package flyspell-lazy :defer t)
@@ -135,6 +135,7 @@
     (add-to-list 'auto-mode-alist '("\\.god$" . ruby-mode))
     (add-to-list 'auto-mode-alist '("\\.rake$" . ruby-mode))
     (add-to-list 'auto-mode-alist '("\\.ru$" . ruby-mode))
+    (add-to-list 'auto-mode-alist '("\\.cap$" . ruby-mode))
     (add-to-list 'auto-mode-alist '("\\.gear$" . ruby-mode)))
   :config
   (progn
@@ -166,6 +167,10 @@
       (progn
         (autoload 'inf-ruby "inf-ruby" "Run an inferior Ruby process" t)
         (add-hook 'ruby-mode-hook 'inf-ruby-minor-mode)))
+    (use-package company
+      :config
+      (progn
+        (use-package company-inf-ruby)))
     (use-package robe
       :config
       (add-hook 'ruby-mode-hook 'robe-mode))
