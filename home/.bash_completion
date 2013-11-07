@@ -1,5 +1,0 @@
-# -*- mode: sh -*-
-# ~/.bash_completion
-
-# Load up all the files that are stored locally.
-for file in $HOME/.bash_completion.d/*; do source $file; done
