@@ -4,7 +4,7 @@
 # HACK: Because how rbenv (and I assume nodenv) shims work the versions were
 # being screwed up because how tmux launches subshells. This resets the PATH
 # so that we avoid duplicates.
-[ -z "$TMUX" ] || export PATH=/usr/local/bin:/usr/bin:/bin
+[ -z "$TMUX" ] || export PATH=/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin
 
 # Source the local profile for any specific changes that should only
 # be loaded up in an interactive shell.
@@ -34,3 +34,5 @@ echo "uptime $(uptime)"
 
 # Display a custom bash prompt.
 [ -f $HOME/.bash_prompt ] && source $HOME/.bash_prompt
+
+export PATH=bin:$PATH
