@@ -24,12 +24,13 @@ alias sc="script/console"
 alias rc="be rails console"
 
 # Make Git a little bit easier.
-alias pr="git pull --rebase"
+alias pr="git pr"
 alias rp="pr && git push"
 alias d="git diff"
 alias st="git st"
 alias gp='git push'
 alias gf='git fetch --all'
+alias gsu='git submodule update --init'
 
 alias k9="kill -9"
 alias em='emacs -nw'
