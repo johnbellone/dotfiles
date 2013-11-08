@@ -1,8 +1,9 @@
 # -*- mode: sh -*-
 # ~/.bash_login - executed for all shells
 
+# Add the core utilities to PATH if they are installed. This became
+# a problem when we changed how/where we installed them at work.
 [ -z $GNU_PATH ] || {
-    # Add GNU core utilities to PATH.
     PATH="$GNU_PATH/opt/coreutils/libexec/gnubin:$PATH"
     MANPATH="$GNU_PATH/opt/coreutils/libexec/gnuman:$MANPATH"
     alias ls='ls --color=auto'

@@ -11,7 +11,7 @@ alias ll='ls -AclhsF'
 alias la='ls -Ah'
 alias l='ls -CFh'
 
-# Rails specific stuff.
+# Ruby specific stuff.
 alias b="bundle"
 alias bi="b install"
 alias bil="bi --local"
@@ -22,14 +22,16 @@ alias bp="b package"
 alias gb="gem build"
 alias sc="script/console"
 alias rc="be rails console"
+
+# Make Git a little bit easier.
 alias pr="git pull --rebase"
 alias rp="pr && git push"
 alias d="git diff"
 alias st="git st"
-alias k="kill -9"
 alias gp='git push'
 alias gf='git fetch --all'
 
+alias k9="kill -9"
 alias em='emacs -nw'
 alias ec='emacsclient -t'
 
