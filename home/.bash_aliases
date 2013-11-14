@@ -31,6 +31,7 @@ alias st="git st"
 alias gp='git push'
 alias gf='git fetch --all'
 alias gsu='git submodule update --init'
+alias gcb='git cob'
 
 alias k9="kill -9"
 alias em='emacs -nw'
