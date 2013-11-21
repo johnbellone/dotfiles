@@ -1,0 +1,18 @@
+{
+    "cookbook": {
+        "copyright": "Copyright (C) 2013 Bloomberg L.P.",
+        "email": "jbellone@bloomberg.net",
+        "license": "Apache"
+    },
+    "allowed_licenses": [ "mit", "apache", "bsd" ],
+    "raise_license_exception": true,
+    "ssl": {
+        "verify": false
+    },
+    "vagrant": {
+        "vm": {
+            "box": "opscode-centos-6.4",
+            "box_url": "https://opscode-vm-bento.s3.amazonaws.com/vagrant/opscode_centos-6.4_provisionerless.box"
+        }
+    }
+}
