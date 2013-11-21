@@ -1,5 +1,4 @@
-#!/usr/bin/env bash -e
-# ~/.jsrc
+#!/bin/bash -e
 [ -z $DEBUG ] || set -x
 [ -d $HOME/.nodenv ] || return
 export NODENV_PATH=$HOME/.nodenv

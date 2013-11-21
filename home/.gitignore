@@ -3,6 +3,7 @@
 /tmp
 /.DS_Store
 /log
+/bin
 .vagrant
 .bundle
 .chaindrive

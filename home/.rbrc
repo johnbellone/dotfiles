@@ -1,5 +1,4 @@
-#!/usr/bin/env bash -e
-# ~/.rbrc
+#!/bin/bash -e
 [ -z $DEBUG ] || set -x
 [ -d $HOME/.rbenv ] || return
 export RBENV_PATH=$HOME/.rbenv
