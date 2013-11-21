@@ -1,6 +1,6 @@
 #!/bin/bash -e
 [ -z $DEBUG ] || set -x
-[ -d $HOME/.rbenv ] || return
-export RBENV_PATH=$HOME/.rbenv
+[ -z $RBENV_PATH ] || RBENV_PATH=$HOME/.rbenv
+[ -d $RBENV_PATH ] || return 
 export PATH=$RBENV_PATH/bin:$PATH
 eval "$(rbenv init -)"
