@@ -34,6 +34,7 @@ alias gsu='git submodule update --init'
 alias gcb='git cob'
 
 alias k9="kill -9"
+alias ed='emacs -nw --daemon'
 alias em='emacs -nw'
 alias ec='emacsclient -t'
 
