@@ -6,7 +6,6 @@
 [ -z $GNU_PATH ] || {
     PATH="$GNU_PATH/opt/coreutils/libexec/gnubin:$PATH"
     MANPATH="$GNU_PATH/opt/coreutils/libexec/gnuman:$MANPATH"
-    alias ls='ls --color=auto'
 }
 
 # Source JavaScript and Ruby environments if they exist.
