@@ -30,6 +30,8 @@ alias d="git diff"
 alias st="git st"
 alias gp='git push'
 alias gf='git fetch --all'
+alias gm='git merge'
+alias mu='gm upstream/master'
 alias gsu='git submodule update --init'
 alias gcb='git cob'
 
