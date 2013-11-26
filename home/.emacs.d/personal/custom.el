@@ -55,7 +55,7 @@
   (progn
     (add-hook 'c-mode-hook 'turn-on-fic-mode)
     (add-hook 'go-mode-hook 'turn-on-fic-mode)
-    (add-hook 'ruby-mode-hook 'turn-on-fic-mode)))
+    (add-hook 'enh-ruby-mode-hook 'turn-on-fic-mode)))
 (use-package flymake-mode :defer t)
 (use-package flycheck-mode :defer t)
 (use-package flyspell-lazy :defer t)
@@ -117,26 +117,26 @@
   (progn
     (use-package ack-menu)))
 
-(use-package ruby-mode
+(use-package enh-ruby-mode
   :defer t
-  :mode ("\\.rb$" . ruby-mode)
-  :interpreter ("ruby" . ruby-mode)
+  :mode ("\\.rb$" . enh-ruby-mode)
+  :interpreter ("ruby" . enh-ruby-mode)
   :init
   (progn
     ;; Add files to the global font-lock list for this mode.
-    (add-to-list 'auto-mode-alist '("Capfile\\'" . ruby-mode))
-    (add-to-list 'auto-mode-alist '("Cheffile\\'" . ruby-mode))
-    (add-to-list 'auto-mode-alist '("Guardfile\\'" . ruby-mode))
-    (add-to-list 'auto-mode-alist '("Berksfile\\'" . ruby-mode))
-    (add-to-list 'auto-mode-alist '("Godfile\\'" . ruby-mode))
-    (add-to-list 'auto-mode-alist '("Gearfile\\'" . ruby-mode))
-    (add-to-list 'auto-mode-alist '("Vagrantfile\\'" . ruby-mode))
-    (add-to-list 'auto-mode-alist '("Gemfile\\'" . ruby-mode))
-    (add-to-list 'auto-mode-alist '("\\.god$" . ruby-mode))
-    (add-to-list 'auto-mode-alist '("\\.rake$" . ruby-mode))
-    (add-to-list 'auto-mode-alist '("\\.ru$" . ruby-mode))
-    (add-to-list 'auto-mode-alist '("\\.cap$" . ruby-mode))
-    (add-to-list 'auto-mode-alist '("\\.gear$" . ruby-mode)))
+    (add-to-list 'auto-mode-alist '("Capfile\\'" . enh-ruby-mode))
+    (add-to-list 'auto-mode-alist '("Cheffile\\'" . enh-ruby-mode))
+    (add-to-list 'auto-mode-alist '("Guardfile\\'" . enh-ruby-mode))
+    (add-to-list 'auto-mode-alist '("Berksfile\\'" . enh-ruby-mode))
+    (add-to-list 'auto-mode-alist '("Godfile\\'" . enh-ruby-mode))
+    (add-to-list 'auto-mode-alist '("Gearfile\\'" . enh-ruby-mode))
+    (add-to-list 'auto-mode-alist '("Vagrantfile\\'" . enh-ruby-mode))
+    (add-to-list 'auto-mode-alist '("Gemfile\\'" . enh-ruby-mode))
+    (add-to-list 'auto-mode-alist '("\\.god$" . enh-ruby-mode))
+    (add-to-list 'auto-mode-alist '("\\.rake$" . enh-ruby-mode))
+    (add-to-list 'auto-mode-alist '("\\.ru$" . enh-ruby-mode))
+    (add-to-list 'auto-mode-alist '("\\.cap$" . enh-ruby-mode))
+    (add-to-list 'auto-mode-alist '("\\.gear$" . enh-ruby-mode)))
   :config
   (progn
     ;; Load up the required packages (minor modes).
@@ -153,28 +153,28 @@
       (add-hook 'dired-mode-hook 'rspec-dired-mode))
     (use-package yard-mode
       :config
-      (add-hook 'ruby-mode-hook 'yard-mode))
+      (add-hook 'enh-ruby-mode-hook 'yard-mode))
     (use-package ruby-tools)
     (use-package ruby-block
       :config
-      (add-hook 'ruby-mode-hook 'ruby-block-mode))
+      (add-hook 'enh-ruby-mode-hook 'ruby-block-mode))
     (use-package ruby-end
       :disabled t
       :config
-      (add-hook 'ruby-mode-hook 'ruby-end))
-    (use-package inf-ruby-mode
+      (add-hook 'enh-ruby-mode-hook 'ruby-end))
+    (use-package inf-enh-ruby-mode
       :config
       (progn
         (autoload 'inf-ruby "inf-ruby" "Run an inferior Ruby process" t)
-        (add-hook 'ruby-mode-hook 'inf-ruby-minor-mode)))
+        (add-hook 'enh-ruby-mode-hook 'inf-ruby-minor-mode)))
     (use-package company
       :config
       (progn
         (use-package company-inf-ruby)))
     (use-package robe
       :config
-      (add-hook 'ruby-mode-hook 'robe-mode))
-    (add-hook 'ruby-mode-hook 'flymake-mode)))
+      (add-hook 'enh-ruby-mode-hook 'robe-mode))
+    (add-hook 'enh-ruby-mode-hook 'flymake-mode)))
 
 (use-package go-mode
   :defer t
