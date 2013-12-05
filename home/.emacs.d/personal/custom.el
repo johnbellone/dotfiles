@@ -30,7 +30,7 @@
 
 ;;; Code:
 
-(set-default-font "Inconsolata-16")
+(set-frame-font "Inconsolata-18")
 
 ;; Setup packages that are utilized for display purposes, or at the
 ;; very least commonly used.  I believe for the most part Prelude will
