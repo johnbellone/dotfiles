@@ -30,6 +30,8 @@
 
 ;;; Code:
 
+(set-default-font "Inconsolata-16")
+
 ;; Setup packages that are utilized for display purposes, or at the
 ;; very least commonly used.  I believe for the most part Prelude will
 ;; lazy initialize everything.  Where it doesn't do that I'll just load
