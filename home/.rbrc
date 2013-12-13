@@ -1,6 +1,6 @@
 #!/bin/bash -e
 [ -z $DEBUG ] || set -x
-[ -z $RBENV_PATH ] || RBENV_PATH=$HOME/.rbenv
-[ -d $RBENV_PATH ] || return 
-export PATH=$RBENV_PATH/bin:$PATH
-eval "$(rbenv init -)"
+CHRUBY_PATH=/usr/local/share/chruby
+[ -d $CHRUBY_PATH ] || return
+[ -f $CHRUBY_PATH/chruby.sh ] && source $CHRUBY_PATH/chruby.sh
+[ -f $CHRUBY_PATH/auto.sh ] && source $CHRUBY_PATH/auto.sh
