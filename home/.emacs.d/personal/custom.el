@@ -40,6 +40,8 @@
 (require 'use-package)
 
 ;; Required packages that I always want loaded up in my environment.
+(use-package chruby
+  :config (progn (chruby "2.0.0-p353")))
 (use-package dired+
   :defer t
   :config
@@ -82,15 +84,13 @@
     (use-package markdown-mode+)))
 
 (use-package magit
-  :config
+  :init
   (progn
-    (use-package magit-filenotify
-      :disabled t)
     (use-package magit-find-file)
     (use-package magit-tramp)
-    (use-package magit-push-remote
-      :disabled t)
-    (use-package magit-gh-pulls)))
+    (use-package magit-filenotify :disabled t)
+    (use-package magit-push-remote :disabled t)
+    (use-package magit-gh-pulls :disabled t)))
 
 (use-package coffee-mode
   :defer t
@@ -144,32 +144,35 @@
   (progn
     (set 'enh-ruby-bounce-deep-indent 1)
     ;; Load up the required packages (minor modes).
-    (use-package chruby
-      :config
-      (progn (chruby "2.0.0-p353")))
     (use-package rspec-mode
+      :diminish t
       :config
       (progn (add-hook 'dired-mode-hook 'rspec-dired-mode)))
     (use-package yard-mode
+      :diminish t
       :config
       (progn (add-hook 'enh-ruby-mode-hook 'yard-mode)))
     (use-package ruby-tools)
     (use-package ruby-block
+      :diminish t
       :config
       (progn (add-hook 'enh-ruby-mode-hook 'ruby-block-mode)))
     (use-package ruby-end
+      :diminish t
       :config
-      (progn (add-hook 'enh-ruby-mode-hook 'ruby-end)))
+      (progn (add-hook 'enh-ruby-mode-hook 'ruby-end-mode)))
     (use-package inf-ruby-mode
       :config
       (progn
         (autoload 'inf-ruby "inf-ruby" "Run an inferior Ruby process" t)
         (add-hook 'enh-ruby-mode-hook 'inf-ruby-minor-mode)))
     (use-package company
+      :diminish t
       :config
       (progn
         (use-package company-inf-ruby)))
     (use-package robe
+      :diminish t
       :config
       (progn (add-hook 'enh-ruby-mode-hook 'robe-mode)))
     (add-hook 'enh-ruby-mode-hook 'flymake-mode)))
