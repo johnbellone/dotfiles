@@ -134,6 +134,7 @@
     (add-to-list 'auto-mode-alist '("Gearfile\\'" . enh-ruby-mode))
     (add-to-list 'auto-mode-alist '("Vagrantfile\\'" . enh-ruby-mode))
     (add-to-list 'auto-mode-alist '("Gemfile\\'" . enh-ruby-mode))
+    (add-to-list 'auto-mode-alist '("Rakefile\\'" . enh-ruby-mode))
     (add-to-list 'auto-mode-alist '("\\.god$" . enh-ruby-mode))
     (add-to-list 'auto-mode-alist '("\\.rake$" . enh-ruby-mode))
     (add-to-list 'auto-mode-alist '("\\.ru$" . enh-ruby-mode))
@@ -141,30 +142,25 @@
     (add-to-list 'auto-mode-alist '("\\.gear$" . enh-ruby-mode)))
   :config
   (progn
+    (set 'enh-ruby-bounce-deep-indent 1)
     ;; Load up the required packages (minor modes).
-    (use-package rbenv
+    (use-package chruby
       :config
-      (progn
-        ;; Use the rbenv shim instead of 1.8 Ruby.
-        (defvar rbenv-ruby-shim (rbenv--expand-path "shims" "ruby"))
-        (setq enh-ruby-program (describe-variable 'rbenv-ruby-shim))
-        (rbenv-use-global)
-        (global-rbenv-mode)))
+      (progn (chruby "2.0.0-p353")))
     (use-package rspec-mode
       :config
-      (add-hook 'dired-mode-hook 'rspec-dired-mode))
+      (progn (add-hook 'dired-mode-hook 'rspec-dired-mode)))
     (use-package yard-mode
       :config
-      (add-hook 'enh-ruby-mode-hook 'yard-mode))
+      (progn (add-hook 'enh-ruby-mode-hook 'yard-mode)))
     (use-package ruby-tools)
     (use-package ruby-block
       :config
-      (add-hook 'enh-ruby-mode-hook 'ruby-block-mode))
+      (progn (add-hook 'enh-ruby-mode-hook 'ruby-block-mode)))
     (use-package ruby-end
-      :disabled t
       :config
-      (add-hook 'enh-ruby-mode-hook 'ruby-end))
-    (use-package inf-enh-ruby-mode
+      (progn (add-hook 'enh-ruby-mode-hook 'ruby-end)))
+    (use-package inf-ruby-mode
       :config
       (progn
         (autoload 'inf-ruby "inf-ruby" "Run an inferior Ruby process" t)
@@ -175,7 +171,7 @@
         (use-package company-inf-ruby)))
     (use-package robe
       :config
-      (add-hook 'enh-ruby-mode-hook 'robe-mode))
+      (progn (add-hook 'enh-ruby-mode-hook 'robe-mode)))
     (add-hook 'enh-ruby-mode-hook 'flymake-mode)))
 
 (use-package go-mode
