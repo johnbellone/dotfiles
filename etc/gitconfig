@@ -30,7 +30,6 @@
 	co = checkout
 	b = branch
 	dfc = diff --cached
-	gpr = pull --rebase
 	rb = rebase
 	ci = commit
 	co = checkout
@@ -42,9 +41,12 @@
 	ls = log --graph --color --pretty=\"format:%C(yellow)%h%Creset%C(green)%d%Creset %s %Cblue[%aN]%Creset %C(magenta){%cr}%Creset\"
 	la = log --graph --color --pretty=\"format:%C(yellow)%h%Creset%C(green)%d%Creset %s %Cblue[%aN]%Creset %C(magenta){%cr}%Creset\" --all
 	pr = pull --rebase
+	cm = commit -C HEAD --amend
 [grep]
 	lineNumber = true
 [rerere]
 	enabled = true
 [hub]
 	protocol = https
+[gh]
+	protocol = https	
