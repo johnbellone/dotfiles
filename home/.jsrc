@@ -1,6 +1,0 @@
-#!/bin/bash -e
-[ -z $DEBUG ] || set -x
-[ -z $NODENV_PATH ] || NODENV_PATH=$HOME/.nodenv
-[ -d $NODENV_PATH ] || return
-export PATH=$NODENV_PATH/bin:$PATH
-eval "$(nodenv init -)"

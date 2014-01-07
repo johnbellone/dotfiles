@@ -1,6 +1,0 @@
-#!/bin/bash -e
-[ -z $DEBUG ] || set -x
-CHRUBY_PATH=/usr/local/share/chruby
-[ -d $CHRUBY_PATH ] || return
-[ -f $CHRUBY_PATH/chruby.sh ] && source $CHRUBY_PATH/chruby.sh
-[ -f $CHRUBY_PATH/auto.sh ] && source $CHRUBY_PATH/auto.sh

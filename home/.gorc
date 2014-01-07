@@ -1,8 +1,0 @@
-#!/bin/bash -e
-[ -z $DEBUG ] || set -x
-GOPATH=$HOME/.go
-[ -d $GOPATH ] || return
-
-[ `which brew 2>/dev/null` ] && GOROOT=$(brew --prefix go)
-PATH=$GOPATH/bin:$GOROOT/bin:$PATH
-export GOPATH GOROOT PATH
