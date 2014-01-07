@@ -8,4 +8,5 @@
 .bundle
 .chaindrive
 .cache
-
+.berkshelf
+.chef
