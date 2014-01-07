@@ -1,6 +1,6 @@
 ;;; package --- Customized settings for my Emacs environment.
 
-;; Copyright (c) 2013 John Bellone <john.bellone.jr@gmail.com>
+;; Copyright (c) 2012-2014 John Bellone <john.bellone.jr@gmail.com>
 
 ;; Permission is hereby granted, free of charge, to any person obtaining a copy
 ;; of this software and associated documentation files (the "Software"), to deal
@@ -101,7 +101,7 @@
 
 (use-package js2-mode
   :defer t
-  :mode ("\\.js$" . js3-mode)
+  :mode ("\\.js$" . js2-mode)
   :config
   (progn
     (use-package flymake-gjshint)))
@@ -139,6 +139,7 @@
     (add-to-list 'auto-mode-alist '("\\.rake$" . enh-ruby-mode))
     (add-to-list 'auto-mode-alist '("\\.ru$" . enh-ruby-mode))
     (add-to-list 'auto-mode-alist '("\\.cap$" . enh-ruby-mode))
+    (add-to-list 'auto-mode-alist '("\\.gemspec$" . enh-ruby-mode))
     (add-to-list 'auto-mode-alist '("\\.gear$" . enh-ruby-mode)))
   :config
   (progn
@@ -215,9 +216,3 @@
 
 (provide 'custom)
 ;;; custom.el ends here
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
