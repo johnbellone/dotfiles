@@ -31,6 +31,7 @@ export EDITOR="emacsclient -t"
 export VISUAL="emacs"
 export PAGER="less"
 export LESS="-R -M"
+export TERM="xterm-256color"
 
 export PATH
 
