@@ -29,24 +29,18 @@
 ;; been so graciously provided.
 
 ;;; Code:
-(if (x-list-fonts "Inconsolata-18")
-    (progn (set-frame-font "Inconsolata-18") t) nil)
 
-(prelude-require-packages '(package+ use-package))
-
-;; Keep some core packages always up-to-date.
+(prelude-ensure-module-deps '(package+ use-package))
 (require 'package+)
-(package-manifest 'fic-mode
-                  'dired+
-                  'dired-details
-                  'dired-details+
-                  'magit
-                  'magit-tramp
-                  'magit-push-remote)
-
-(global-fic-mode t)
-
-(require use-package)
+(require 'use-package)
+(package-manifest
+ 'fic-mode
+ 'dired+
+ 'dired-details+
+ 'magit
+ 'magit-tramp
+ 'magit-push-remote
+ 'magit-annex)
 
 (use-package chruby
   :config (progn (chruby "2.0.0-p353")))
