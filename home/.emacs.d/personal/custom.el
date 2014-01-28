@@ -1,17 +1,18 @@
-;;; package --- Customized settings for my Emacs environment.
-
-;; Copyright (c) 2012-2014 John Bellone <john.bellone.jr@gmail.com>
-
+;;; custom --- Customized settings for my Emacs environment.
+;;
+;; Copyright © 2011-2014 John Bellone <john.bellone.jr@gmail.com>
+;;
+;;; License:
 ;; Permission is hereby granted, free of charge, to any person obtaining a copy
 ;; of this software and associated documentation files (the "Software"), to deal
 ;; in the Software without restriction, including without limitation the rights
 ;; to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
 ;; copies of the Software, and to permit persons to whom the Software is
 ;; furnished to do so, subject to the following conditions:
-
+;;
 ;; The above copyright notice and this permission notice shall be included in
 ;; all copies or substantial portions of the Software.
-
+;;
 ;; THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 ;; IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
 ;; FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -21,7 +22,6 @@
 ;; THE SOFTWARE.
 
 ;;; Commentary:
-
 ;; For the longest time I actually maintained my own Emacs settings.  This was
 ;; was an absolute, pain the ass.  Once I found Prelude I decided that I was no
 ;; longer going to waste my time doing this.  Rather than that I decided that
@@ -29,37 +29,33 @@
 ;; been so graciously provided.
 
 ;;; Code:
+(if (x-list-fonts "Inconsolata-18")
+    (progn (set-frame-font "Inconsolata-18") t) nil)
 
-(set-frame-font "Inconsolata-18")
+(prelude-require-packages '(package+ use-package))
 
-;; Setup packages that are utilized for display purposes, or at the
-;; very least commonly used.  I believe for the most part Prelude will
-;; lazy initialize everything.  Where it doesn't do that I'll just load
-;; them up myself (see below).
-(prelude-ensure-module-deps '(use-package))
-(require 'use-package)
+;; Keep some core packages always up-to-date.
+(require 'package+)
+(package-manifest 'fic-mode
+                  'dired+
+                  'dired-details
+                  'dired-details+
+                  'magit
+                  'magit-tramp
+                  'magit-push-remote)
 
-;; Required packages that I always want loaded up in my environment.
+(global-fic-mode t)
+
+(require use-package)
+
 (use-package chruby
   :config (progn (chruby "2.0.0-p353")))
-(use-package dired+
-  :defer t
-  :config
-  (progn
-    (use-package dired-details)
-    (use-package dired-details+)))
 (use-package company
   :config
   (progn
     (use-package company-inf-ruby :defer t)
     (add-hook 'after-init-hook 'global-company-mode)))
 (use-package diminish)
-(use-package fic-mode
-  :config
-  (progn
-    (add-hook 'c-mode-hook 'turn-on-fic-mode)
-    (add-hook 'go-mode-hook 'turn-on-fic-mode)
-    (add-hook 'enh-ruby-mode-hook 'turn-on-fic-mode)))
 (use-package flymake-mode :defer t)
 (use-package flycheck-mode :defer t)
 (use-package flyspell-lazy :defer t)
@@ -69,7 +65,6 @@
   (progn
     (use-package flymake-yaml)))
 
-;; Packages that should be loaded up on the first initialization.
 (use-package csharp-mode :defer t)
 (use-package crontab-mode :defer t)
 (use-package bitly :defer t)
@@ -82,15 +77,6 @@
   :config
   (progn
     (use-package markdown-mode+)))
-
-(use-package magit
-  :init
-  (progn
-    (use-package magit-find-file)
-    (use-package magit-tramp)
-    (use-package magit-filenotify :disabled t)
-    (use-package magit-push-remote :disabled t)
-    (use-package magit-gh-pulls :disabled t)))
 
 (use-package coffee-mode
   :defer t
