@@ -30,20 +30,11 @@
 
 ;;; Code:
 
-(prelude-ensure-module-deps '(package+ use-package))
-(require 'package+)
+(prelude-ensure-module-deps '(use-package))
 (require 'use-package)
-(package-manifest
- 'fic-mode
- 'dired+
- 'dired-details+
- 'magit
- 'magit-tramp
- 'magit-push-remote
- 'magit-annex)
 
-(use-package chruby
-  :config (progn (chruby "2.0.0-p353")))
+;;(use-package chruby
+;;  :config (progn (chruby "ruby-2.0.0")))
 (use-package company
   :config
   (progn
