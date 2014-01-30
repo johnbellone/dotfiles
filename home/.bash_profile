@@ -4,21 +4,20 @@
 # HACK: Because how rbenv (and I assume nodenv) shims work the versions were
 # being screwed up because how tmux launches subshells. This resets the PATH
 # so that we avoid duplicates.
-[ -z "$TMUX" ] || export PATH=/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin
+[ -z "$TMUX" ] || export PATH=/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin
 
 # Source the local profile for any specific changes that should only
 # be loaded up in an interactive shell.
 [ -f $HOME/.profile ] && source $HOME/.profile
 
 # Figure out the proper path for all optional software.
-[ `which brew 2>/dev/null` ] && HOMEBREW_PATH=$(brew --prefix)
-OPT_PATH=${HOMEBREW_PATH:-/usr/local}
+OPT_PATH=${HOMEBREW_ROOT/opt:-/usr/local}
 
 # Source all of additional files if they're sitting around.
 [ -f $HOME/.bashrc ] && source $HOME/.bashrc
 
 # If the system has bash-completion installed attempt to source it.
-[ -f $OPT_PATH/etc/bash_completion ] && source $OPT_PATH/etc/bash_completion
+[ -f $HOMEBREW_ROOT/etc/bash_completion ] && source $HOMEBREW_ROOT/etc/bash_completion
 
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return

@@ -27,8 +27,9 @@ if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
 fi
 
-export EDITOR="emacsclient -t"
-export VISUAL="emacs"
+export ALTERNATE_EDITOR='emacs -nw'
+export EDITOR='emacsclient -t'
+export VISUAL='emacsclient -t'
 export PAGER="less"
 export LESS="-R -M"
 export TERM="xterm-256color"
