@@ -38,47 +38,30 @@
 (use-package company
   :config
   (progn
-    (use-package company-inf-ruby :defer t)
+    (use-package company-inf-ruby)
     (add-hook 'after-init-hook 'global-company-mode)))
 (use-package diminish)
-(use-package flymake-mode :defer t)
-(use-package flycheck-mode :defer t)
-(use-package flyspell-lazy :defer t)
+(use-package flyspell-lazy)
 (use-package yaml-mode
-  :defer t
   :config
   (progn
     (use-package flymake-yaml)))
 
-(use-package csharp-mode :defer t)
-(use-package crontab-mode :defer t)
-(use-package bitly :defer t)
-(use-package emamux :defer t)
-(use-package google-c-style :defer t)
-(use-package google-this)
-(use-package protobuf-mode :defer t)
-(use-package markdown-mode
-  :defer t
-  :config
-  (progn
-    (use-package markdown-mode+)))
+(use-package markdown-mode :ensure markdown-mode+)
 
 (use-package coffee-mode
-  :defer t
   :mode ("\\.coffee$" . coffee-mode)
   :config
   (progn
     (use-package flymake-coffee)))
 
 (use-package js2-mode
-  :defer t
   :mode ("\\.js$" . js2-mode)
   :config
   (progn
     (use-package flymake-gjshint)))
 
 (use-package json-mode
-  :defer t
   :mode ("\\.json$" . json-mode)
   :config
   (progn
@@ -90,8 +73,14 @@
   (progn
     (use-package ack-menu)))
 
+(use-package autopair
+  :diminish t
+  :config
+  (progn
+    (autopair-global-mode)))
+
 (use-package enh-ruby-mode
-  :defer t
+  :ensure autopair
   :mode ("\\.rb$" . enh-ruby-mode)
   :interpreter ("ruby" . enh-ruby-mode)
   :init
@@ -115,16 +104,14 @@
   :config
   (progn
     (set 'enh-ruby-bounce-deep-indent 1)
-    ;; Load up the required packages (minor modes).
-    (use-package rspec-mode
+
+    (use-package company-inf-ruby
       :diminish t
-      :config
-      (progn (add-hook 'dired-mode-hook 'rspec-dired-mode)))
+      :ensure company)
     (use-package yard-mode
       :diminish t
       :config
       (progn (add-hook 'enh-ruby-mode-hook 'yard-mode)))
-    (use-package ruby-tools)
     (use-package ruby-block
       :diminish t
       :config
@@ -133,21 +120,15 @@
       :diminish t
       :config
       (progn (add-hook 'enh-ruby-mode-hook 'ruby-end-mode)))
-    (use-package inf-ruby-mode
+    (use-package inf-ruby
       :config
       (progn
         (autoload 'inf-ruby "inf-ruby" "Run an inferior Ruby process" t)
         (add-hook 'enh-ruby-mode-hook 'inf-ruby-minor-mode)))
-    (use-package company
-      :diminish t
-      :config
-      (progn
-        (use-package company-inf-ruby)))
     (use-package robe
       :diminish t
       :config
-      (progn (add-hook 'enh-ruby-mode-hook 'robe-mode)))
-    (add-hook 'enh-ruby-mode-hook 'flymake-mode)))
+      (progn (add-hook 'enh-ruby-mode-hook 'robe-mode)))))
 
 (use-package go-mode
   :defer t
