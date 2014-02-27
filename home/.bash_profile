@@ -33,5 +33,3 @@ echo "uptime $(uptime)"
 
 # Display a custom bash prompt.
 [ -f $HOME/.bash_prompt ] && source $HOME/.bash_prompt
-
-export PATH=bin:$PATH

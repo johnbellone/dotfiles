@@ -2,6 +2,7 @@
 # ~/.bashrc: executed by bash(1) for non-login shells.
 
 # Alias definitions.
+[ -f $HOME/.aliases ] && source $HOME/.aliases
 [ -f $HOME/.bash_aliases ] && source $HOME/.bash_aliases
 
 # As the last step execute any local machine specific settings that
