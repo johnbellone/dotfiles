@@ -77,7 +77,9 @@
   :diminish t
   :config
   (progn
-    (autopair-global-mode)))
+    (add-hook 'enh-ruby-mode
+              '(lambda ()
+                 (autopair-mode 1)))))
 
 (use-package enh-ruby-mode
   :ensure autopair
