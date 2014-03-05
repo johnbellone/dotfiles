@@ -99,6 +99,7 @@
     (add-to-list 'auto-mode-alist '("Rakefile\\'" . enh-ruby-mode))
     (add-to-list 'auto-mode-alist '("\\.god$" . enh-ruby-mode))
     (add-to-list 'auto-mode-alist '("\\.rake$" . enh-ruby-mode))
+    (add-to-list 'auto-mode-alist '("\\.task$" . enh-ruby-mode))
     (add-to-list 'auto-mode-alist '("\\.ru$" . enh-ruby-mode))
     (add-to-list 'auto-mode-alist '("\\.cap$" . enh-ruby-mode))
     (add-to-list 'auto-mode-alist '("\\.gemspec$" . enh-ruby-mode))
@@ -107,6 +108,9 @@
   (progn
     (set 'enh-ruby-bounce-deep-indent 1)
 
+    (use-package rubocop-mode
+      :config
+      (progn (add-hook 'enh-ruby-mode-hook 'rubocop-mode)))
     (use-package company-inf-ruby
       :diminish t
       :ensure company)
