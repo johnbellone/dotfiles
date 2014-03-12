@@ -1,3 +1,4 @@
+#!/bin/sh
 # For the most part I install GNU coreutils on most of my setups.
 export CLICOLOR=1
 export LSCOLORS=gxBxhxDxfxhxhxhxhxcxcx

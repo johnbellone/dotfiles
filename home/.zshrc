@@ -14,3 +14,5 @@ echo "uptime $(uptime)"
 [ `command -v java >/dev/null` ] && echo "$(java -version 2>&1 | head -n2 | tail -n1)"
 [ `command -v node >/dev/null` ] && echo "nodejs $(node --version) npm $(npm --version)"
 [ `command -v go >/dev/null` ] && echo "$(go version)"
+
+[ -f $HOME/.aliases ] && . $HOME/.aliases
