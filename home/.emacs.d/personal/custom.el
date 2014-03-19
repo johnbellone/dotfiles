@@ -150,6 +150,14 @@
               (lambda ()
                 (add-hook 'before-save-hook 'gofmt-before-save)))))
 
+;; http://www.emacswiki.org/emacs/EmacsClient#WMFocus
+(add-hook 'server-switch-hook
+          (lambda ()
+            (when (current-local-map)
+              (use-local-map (copy-keymap (current-local-map))))
+            (when server-buffer-clients
+              (local-set-key (kbd "C-x k") 'server-edit))))
+
 ;; There are a few variables that I am going to always want to modify.  These
 ;; are generally personalized overrides of the defaults.
 (custom-set-variables
