@@ -1,0 +1,3 @@
+#!/bin/sh
+export ESRVNAME=${1:-dev}
+/usr/bin/env emacs --daemon=$ESRVNAME
