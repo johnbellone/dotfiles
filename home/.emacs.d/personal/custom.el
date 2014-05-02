@@ -73,11 +73,6 @@
   (progn
     (use-package ack-menu)))
 
-(use-package autopair
-  :diminish t
-  :config
-  (progn (add-hook 'enh-ruby-mode-hook 'autopair-mode)))
-
 (use-package enh-ruby-mode
   :ensure autopair
   :mode ("\\.rb$" . enh-ruby-mode)
@@ -106,7 +101,7 @@
   (progn
     (set 'enh-ruby-bounce-deep-indent 1)
 
-    (use-package rubocop-mode
+    (use-package rubocop
       :config
       (progn (add-hook 'enh-ruby-mode-hook 'rubocop-mode)))
     (use-package company-inf-ruby
@@ -120,10 +115,6 @@
       :diminish t
       :config
       (progn (add-hook 'enh-ruby-mode-hook 'ruby-block-mode)))
-    (use-package ruby-end
-      :diminish t
-      :config
-      (progn (add-hook 'enh-ruby-mode-hook 'ruby-end-mode)))
     (use-package inf-ruby
       :config
       (progn
@@ -167,7 +158,8 @@
  ;; If there is more than one, they won't work right.
  '(blink-cursor-mode nil)
  '(column-number-mode t)
- '(custom-safe-themes (quote ("e16a771a13a202ee6e276d06098bc77f008b73bbac4d526f160faa2d76c1dd0e" "8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" "a2c537c981b4419aa3decac8e565868217fc2995b74e1685c5ff8c6d77b198d6" "c5207e7b8cc960e08818b95c4b9a0c870d91db3eaf5959dd4eba09098b7f232b" default)))
+ '(custom-safe-themes (quote ("a53714de04cd4fdb92ed711ae479f6a1d7d5f093880bfd161467c3f589725453" "ae8d0f1f36460f3705b583970188e4fbb145805b7accce0adb41031d99bd2580" "4aee8551b53a43a883cb0b7f3255d6859d766b6c5e14bcb01bed572fcbef4328" "25cfeb08ce2a19741a98639f57f77218badee1523eaec5d1b32831c7f9ed50d8" "70cf411fbf9512a4da81aa1e87b064d3a3f0a47b19d7a4850578c8d64cac2353" "de2c46ed1752b0d0423cde9b6401062b67a6a1300c068d5d7f67725adc6c3afb" "9bac44c2b4dfbb723906b8c491ec06801feb57aa60448d047dbfdbd1a8650897" "1affe85e8ae2667fb571fc8331e1e12840746dae5c46112d5abb0c3a973f5f5a" "e16a771a13a202ee6e276d06098bc77f008b73bbac4d526f160faa2d76c1dd0e" "8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" "a2c537c981b4419aa3decac8e565868217fc2995b74e1685c5ff8c6d77b198d6" "c5207e7b8cc960e08818b95c4b9a0c870d91db3eaf5959dd4eba09098b7f232b" default)))
+ '(fci-rule-color "#383838")
  '(fic-highlighted-words (quote ("BUG" "TODO" "NOTE" "KLUDGE" "HACK" "FIX" "FIXME")))
  '(flymake-max-parallel-syntax-checks nil)
  '(flymake-run-in-place nil)
@@ -176,7 +168,10 @@
  '(menu-bar-mode nil)
  '(show-paren-mode t)
  '(size-indication-mode t)
- '(temporary-file-directory "/tmp"))
+ '(temporary-file-directory "/tmp")
+ '(vc-annotate-background "#2B2B2B")
+ '(vc-annotate-color-map (quote ((20 . "#BC8383") (40 . "#CC9393") (60 . "#DFAF8F") (80 . "#D0BF8F") (100 . "#E0CF9F") (120 . "#F0DFAF") (140 . "#5F7F5F") (160 . "#7F9F7F") (180 . "#8FB28F") (200 . "#9FC59F") (220 . "#AFD8AF") (240 . "#BFEBBF") (260 . "#93E0E3") (280 . "#6CA0A3") (300 . "#7CB8BB") (320 . "#8CD0D3") (340 . "#94BFF3") (360 . "#DC8CC3"))))
+ '(vc-annotate-very-old-color "#DC8CC3"))
 
 (provide 'custom)
 ;;; custom.el ends here
