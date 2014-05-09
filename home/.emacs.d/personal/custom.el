@@ -30,6 +30,8 @@
 
 ;;; Code:
 
+(set-face-attribute 'default nil :height 160)
+
 (prelude-ensure-module-deps '(use-package))
 (require 'use-package)
 
