@@ -35,8 +35,11 @@
 (prelude-ensure-module-deps '(use-package))
 (require 'use-package)
 
-;;(use-package chruby
-;;  :config (progn (chruby "ruby-2.0.0")))
+(require 'chruby)
+(chruby "ruby-2.0.0")
+
+(use-package chruby
+  :config (progn (chruby "ruby-2.0.0")))
 (use-package company
   :config
   (progn
