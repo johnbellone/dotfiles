@@ -1,5 +1,4 @@
 #!/bin/sh
-# For the most part I install GNU coreutils on most of my setups.
 export CLICOLOR=1
 export LSCOLORS=gxBxhxDxfxhxhxhxhxcxcx
 export LS_COLORS='di=38;5;108:fi=00:*svn-commit.tmp=31:ln=38;5;116:ex=38;5;186'
@@ -33,8 +32,6 @@ alias gm='git merge'
 alias mu='gm upstream/master'
 alias gsu='git submodule update --init'
 alias gcb='git cob'
-
-alias k9="kill -9"
 
 # Make sure that my grep is colorized.
 alias grep='grep --color=auto'
