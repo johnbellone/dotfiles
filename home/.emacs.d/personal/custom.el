@@ -38,6 +38,8 @@
 (require 'chruby)
 (chruby "ruby-2.0.0")
 
+(setq whitespace-line-column 120)
+
 (use-package chruby
   :config (progn (chruby "ruby-2.0.0")))
 (use-package company
