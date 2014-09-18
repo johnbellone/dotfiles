@@ -30,18 +30,15 @@
 
 ;;; Code:
 
-(set-face-attribute 'default nil :height 160)
-
 (prelude-ensure-module-deps '(use-package))
 (require 'use-package)
 
 (require 'chruby)
-(chruby "ruby-2.0.0")
 
 (setq whitespace-line-column 120)
 
 (use-package chruby
-  :config (progn (chruby "ruby-2.0.0")))
+  :config (progn (chruby "2.1.2")))
 (use-package company
   :config
   (progn

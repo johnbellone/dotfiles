@@ -4,3 +4,4 @@
 /bin
 Gemfile.lock
 home/.berkshelf
+home/.emacs.d/personal
