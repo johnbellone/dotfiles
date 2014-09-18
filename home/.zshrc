@@ -10,4 +10,4 @@ if $(gls &>/dev/null); then
    alias ls="gls -F --color=auto"
 fi
 
-PROMPT="%F{229}%m%F{238}:%F{216}%~ %F{238}%# %f"
+PROMPT="%F{216}%~ %F{229}%# %f"
