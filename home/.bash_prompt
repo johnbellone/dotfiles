@@ -8,4 +8,4 @@ ORANGE="\[$(tput setaf 216)\]"
 YELLOW="\[$(tput setaf 229)\]"
 GREY="\[$(tput setaf 238)\]"
 
-PS1="$GREEN\t $YELLOW\u@\h$GREY:$ORANGE\W$GREY \$ $RESET"
+PS1="$ORANGE\W$GREY \$ $RESET"
