@@ -1,0 +1,25 @@
+# -*- mode: conf-unix -*-
+[general]
+accounts = Gmail
+maxsyncaccounts = 1
+pythonfile = ~/.offlineimap.py
+
+[Account Gmail]
+localrepository = Local
+remoterepository = Remote
+
+[Repository Local]
+type = Maildir
+localfolders = ~/Documents/Mail
+
+[Repository Remote]
+type = Gmail
+remoteuser = john.bellone.jr@gmail.com
+remotepassval = get_password_emacs("imap.gmail.com", "john.bellone.jr@gmail.com", "993")
+realdelete = no
+
+folderfilter = lambda foldername: foldername not in ['[Gmail]/Spam', '[Gmail]/All Mail', '[Gmail]/Starred', '[Gmail]/Important']
+
+holdconnectionopen = true
+keepalive = 60
+sslcacertfile = /usr/local/opt/curl-ca-bundle/share/ca-bundle.crt
