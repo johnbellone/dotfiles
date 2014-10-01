@@ -1,5 +1,5 @@
 #!/usr/bin/env zsh
-path=(bin $HOME/bin/$MACHTYPE-$OSTYPE $HOME/bin /usr/local/bin /usr/bin /usr/local/sbin /usr/sbin)
+path=(bin $HOME/bin/$MACHTYPE-$OSTYPE $HOME/bin /usr/local/bin /usr/bin /usr/local/sbin /usr/sbin /bin /sbin)
 
 # Handle homebrew on OSX installing coreutils into an alternate directory.
 [ -d /usr/local/opt/coreutils/libexec/gnubin ] && \
