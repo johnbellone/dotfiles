@@ -3,5 +3,6 @@
 #*
 /bin
 Gemfile.lock
+home/.weechat
 home/.berkshelf
 home/.emacs.d/personal
