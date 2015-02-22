@@ -9,7 +9,11 @@ path=(bin $HOME/bin/$MACHTYPE-$OSTYPE $HOME/bin /usr/local/bin /usr/bin /usr/loc
 
 # Automatically source chruby if it exists on disk and not already loaded up.
 if ! command -v chruby > /dev/null; then
-    [ -d /usr/local/share/chruby ] && . /usr/local/share/chruby/chruby.sh
+    if [ -d /usr/local/share/chruby ]; then
+        . /usr/local/share/chruby/chruby.sh
+    elif [ -d /usr/local/opt/chruby ]; then
+        . /usr/local/opt/chruby/share/chruby/chruby.sh
+    fi
 fi
 
 # If the Chef development kit exists on this system be sure to add it
