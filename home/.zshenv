@@ -16,10 +16,6 @@ if ! command -v chruby > /dev/null; then
     fi
 fi
 
-# If the Chef development kit exists on this system be sure to add it
-# to the rubies. This is used for chruby support.
-[ -d /opt/chefdk ] && RUBIES+=(/opt/chefdk/embedded)
-
 EDITOR='emacsclient -t'
 
 typeset -U path MANPATH RUBIES EDITOR
