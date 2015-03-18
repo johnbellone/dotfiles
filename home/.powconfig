@@ -1,3 +1,0 @@
-RBENV_SHIMS=$(rbenv root)/shims:$(rbenv root)/bin
-NODENV_SHIMS=$(nodenv root)/shims:$(nodenv root)/bin
-export PATH=$RBENV_SHIMS:$NODENV_SHIMS:$PATH
