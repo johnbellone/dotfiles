@@ -1,3 +1,4 @@
+# -*- mode: enh-ruby -*-
 # IRBRC file by Iain Hecker, http://iain.nl
 # put all this in your ~/.irbrc
 require 'rubygems'
@@ -114,7 +115,7 @@ extend_console 'pm', true, false do
     end
     max_name = data.collect {|item| item[0].size}.max
     max_args = data.collect {|item| item[1].size}.max
-    data.each do |item| 
+    data.each do |item|
       print " #{ANSI[:YELLOW]}#{item[0].to_s.rjust(max_name)}#{ANSI[:RESET]}"
       print "#{ANSI[:BLUE]}#{item[1].ljust(max_args)}#{ANSI[:RESET]}"
       print "   #{ANSI[:GRAY]}#{item[2]}#{ANSI[:RESET]}\n"
