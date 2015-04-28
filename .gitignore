@@ -1,7 +1,7 @@
 .DS_Store
 ~*
 #*
-/bin
+home/bin
 Gemfile.lock
 home/.weechat
 home/.berkshelf
