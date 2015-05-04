@@ -11,6 +11,16 @@
 (prelude-ensure-module-deps '(use-package))
 (require 'use-package)
 
+(setq org-ditaa-jar-path "/usr/share/java/ditaa.jar")
+(org-babel-do-load-languages
+ 'org-babel-do-load-languages
+ '((ditaa . t)))
+
+(use-package ox-pandoc
+  :config (progn
+            (require 'ox-pandoc)
+            (setq org-pandoc-command "~/.cabal/bin/pandoc")))
+
 (use-package ox-reveal
   :config (progn
             (require 'ox-reveal)))
@@ -132,3 +142,18 @@
 
 (provide 'custom)
 ;;; custom.el ends here
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(cua-mode t nil (cua-base))
+ '(custom-safe-themes
+   (quote
+    ("06538a1193c63f02cd0c7caee54105fa204e24a137ab9b56f86fdd8df6e5ddd4" "17fd8388e49d3055185e817ed3a2b7c955a2dda92b990f475c14a8e1d97dbe4b" "3328e7238e0f6d0a5e1793539dfe55c2685f24b6cdff099c9a0c185b71fbfff9" default))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
