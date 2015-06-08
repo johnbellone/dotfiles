@@ -1,7 +1,7 @@
 # -*- mode: gitconfig -*-
 [user]
 	name = John Bellone
-	email = john.bellone.jr@gmail.com
+	email = jbellone@bloomberg.net
 [core]
 	quotepath = false
 	sharedRepository = all
