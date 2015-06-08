@@ -1,136 +1,125 @@
-;;; custom --- Customized settings for my Emacs environment.
-;;
-;; Copyright © 2011-2015 John Bellone <jbellone@bellone.us>
-;;
+;;; custom.el --- Installs packages and configures them to make me happy.
 ;;; Commentary:
-;; Write something meaningful here.
+;;; Installs and configures packages to make my Emacs environment work.
 ;;; Code:
-
+(set-frame-font "Inconsolata-dz")
 (setq whitespace-line-column 120)
+(tool-bar-mode -1)
+(menu-bar-mode -1)
 
-(prelude-ensure-module-deps '(use-package))
+(prelude-require-packages '(use-package))
 (require 'use-package)
 
-(setq org-ditaa-jar-path "/usr/share/java/ditaa.jar")
-(org-babel-do-load-languages
- 'org-babel-do-load-languages
- '((ditaa . t)))
+(use-package diminish :ensure t)
+(use-package gitattributes-mode :defer t :ensure t)
+(use-package gitconfig-mode :defer t :ensure t)
+(use-package gitignore-mode :defer t :ensure t)
+(use-package google-c-style :defer t :ensure t)
+(use-package ssh-config-mode :defer t :ensure t)
 
-(use-package ox-pandoc
-  :config (progn
-            (require 'ox-pandoc)
-            (setq org-pandoc-command "~/.cabal/bin/pandoc")))
+(use-package osx-browse :ensure t)
+(use-package osx-clipboard :ensure t)
+(use-package osx-lib :ensure t)
+(use-package osx-pseudo-daemon :ensure t)
 
-(use-package ox-reveal
-  :config (progn
-            (require 'ox-reveal)))
-
-(use-package diminish)
-(use-package flyspell-lazy)
-(use-package yaml-mode
-  :config
-  (progn
-    (use-package flymake-yaml)))
-
-(use-package markdown-mode :ensure markdown-mode+)
-
-(use-package coffee-mode
-  :mode ("\\.coffee$" . coffee-mode)
-  :config
-  (progn
-    (use-package flymake-coffee)))
-
-(use-package js2-mode
-  :mode ("\\.js$" . js2-mode)
-  :config
-  (progn
-    (use-package flymake-gjshint)))
-
-(use-package json-mode
-  :mode ("\\.json$" . json-mode)
-  :config
-  (progn
-    (use-package flymake-json)))
-
-(use-package ack
+(use-package org
   :defer t
+  :ensure t
   :config
-  (progn
-    (use-package ack-menu)))
+  (lambda ()
+    (use-package org-ac :ensure t)
+    (use-package org-autolist :ensure t)
+    (use-package org-grep :ensure t)
+    (use-package org-journal :ensure t)
+    (use-package org-pandoc :ensure t)
+    (use-package org-projectile :ensure t)
+    (use-package orgit :ensure t)
+    (use-package ox-pandoc :ensure t)
+    (use-package ox-reveal :ensure t)))
 
 (use-package chruby
-  :config (progn
-            (require 'chruby)
-            (chruby "2.2")))
+  :ensure t
+  :config
+  (chruby "2.2"))
 
 (use-package company
-  :config (progn
-            (use-package company-inf-ruby)
-            (add-hook 'after-init-hook 'global-company-mode)))
+  :ensure t
+  :config
+  (add-hook 'after-init-hook 'global-company-mode))
 
-(use-package enh-ruby-mode
-  :ensure autopair
-  :mode ("\\.rb$" . enh-ruby-mode)
-  :interpreter ("ruby" . enh-ruby-mode)
-  :init (progn
-          ;; Add files to the global font-lock list for this mode.
-          (add-to-list 'auto-mode-alist '("Capfile\\'" . enh-ruby-mode))
-          (add-to-list 'auto-mode-alist '("Cheffile\\'" . enh-ruby-mode))
-          (add-to-list 'auto-mode-alist '("Guardfile\\'" . enh-ruby-mode))
-          (add-to-list 'auto-mode-alist '("Berksfile\\'" . enh-ruby-mode))
-          (add-to-list 'auto-mode-alist '("Godfile\\'" . enh-ruby-mode))
-          (add-to-list 'auto-mode-alist '("Gearfile\\'" . enh-ruby-mode))
-          (add-to-list 'auto-mode-alist '("Vagrantfile\\'" . enh-ruby-mode))
-          (add-to-list 'auto-mode-alist '("Gemfile\\'" . enh-ruby-mode))
-          (add-to-list 'auto-mode-alist '("Thorfile\\'" . enh-ruby-mode))
-          (add-to-list 'auto-mode-alist '("Rakefile\\'" . enh-ruby-mode))
-          (add-to-list 'auto-mode-alist '("\\.god$" . enh-ruby-mode))
-          (add-to-list 'auto-mode-alist '("\\.rake$" . enh-ruby-mode))
-          (add-to-list 'auto-mode-alist '("\\.task$" . enh-ruby-mode))
-          (add-to-list 'auto-mode-alist '("\\.ru$" . enh-ruby-mode))
-          (add-to-list 'auto-mode-alist '("\\.cap$" . enh-ruby-mode))
-          (add-to-list 'auto-mode-alist '("\\.gemspec$" . enh-ruby-mode))
-          (add-to-list 'auto-mode-alist '("\\.gear$" . enh-ruby-mode)))
-  :config (progn
-            (set 'enh-ruby-bounce-deep-indent 1)
-            (use-package rubocop
-              :config (progn
-                        (add-hook 'enh-ruby-mode-hook 'rubocop-mode)))
-            (use-package company-inf-ruby
-              :diminish t
-              :ensure company)
-            (use-package yard-mode
-              :diminish t
-              :config (progn
-                        (add-hook 'enh-ruby-mode-hook 'yard-mode)))
-            (use-package ruby-block
-              :diminish t
-              :config (progn
-                        (add-hook 'enh-ruby-mode-hook 'ruby-block-mode)))
-            (use-package inf-ruby
-              :config (progn
-                        (autoload 'inf-ruby "inf-ruby" "Run an inferior Ruby process" t)
-                        (add-hook 'enh-ruby-mode-hook 'inf-ruby-minor-mode)))
-            (use-package robe
-              :diminish t
-              :config (progn
-                        (add-hook 'enh-ruby-mode-hook 'robe-mode)))))
+(use-package json-mode
+  :defer t
+  :ensure t
+  :config
+  (use-package flymake-json :ensure t))
+
+(use-package helm
+  :ensure t
+  :config
+  (lambda ()
+    (use-package ac-helm
+      :ensure t
+      :config
+      (add-to-list 'ac-modes 'helm-mode))))
+
+(use-package coffee-mode
+  :defer t
+  :ensure t
+  :config
+  (use-package flymake-coffee :ensure t))
+
+(use-package yaml-mode
+  :defer t
+  :ensure t
+  :config
+  (use-package flymake-yaml :ensure t))
 
 (use-package go-mode
   :defer t
-  :mode ("\\.go$" . go-mode)
+  :ensure t
   :config
-  (progn
+  (lambda ()
     (use-package go-autocomplete
+      :ensure t
       :config
       (add-to-list 'ac-modes 'go-mode))
-    (use-package go-eldoc)
-    (use-package go-snippets)
-
-    ;; Setup the hook for the mode (turning on minor modes, etc).
+    (use-package go-eldoc :ensure t)
     (add-hook 'go-mode-hook
               (lambda ()
                 (add-hook 'before-save-hook 'gofmt-before-save)))))
+
+(use-package enh-ruby-mode
+  :ensure t
+  :mode ("\\.rb$" . enh-ruby-mode)
+  :interpreter ("ruby" . enh-ruby-mode)
+  :config
+  (lambda ()
+    (set 'enh-ruby-bounce-deep-indent 1)
+    (use-package company-inf-ruby :diminish t)
+    (use-package ruby-electric
+      :ensure t
+      :diminish t
+      :config
+      (add-hook 'enh-ruby-mode-hook 'ruby-electric-mode))
+    (use-package yard-mode
+      :ensure t
+      :diminish t
+      :config
+      (add-hook 'enh-ruby-mode-hook 'yard-mode))
+    (use-package robe
+      :ensure t
+      :diminish t
+      :config
+      (add-hook 'enh-ruby-mode-hook 'robe-mode))
+    (use-package ruby-block
+      :ensure t
+      :diminish t
+      :config
+      (add-hook 'enh-ruby-mode-hook 'ruby-block-mode))
+    (use-package inf-ruby
+      :ensure t
+      :config
+      (add-hook 'enh-ruby-mode-hook 'inf-ruby-minor-mode))))
 
 ;; http://www.emacswiki.org/emacs/EmacsClient#WMFocus
 (add-hook 'server-switch-hook
@@ -142,18 +131,3 @@
 
 (provide 'custom)
 ;;; custom.el ends here
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(cua-mode t nil (cua-base))
- '(custom-safe-themes
-   (quote
-    ("06538a1193c63f02cd0c7caee54105fa204e24a137ab9b56f86fdd8df6e5ddd4" "17fd8388e49d3055185e817ed3a2b7c955a2dda92b990f475c14a8e1d97dbe4b" "3328e7238e0f6d0a5e1793539dfe55c2685f24b6cdff099c9a0c185b71fbfff9" default))))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
