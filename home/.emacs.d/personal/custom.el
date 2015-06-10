@@ -10,7 +10,6 @@
 (prelude-require-packages '(use-package))
 (require 'use-package)
 
-(use-package diminish :ensure t)
 (use-package gitattributes-mode :defer t :ensure t)
 (use-package gitconfig-mode :defer t :ensure t)
 (use-package gitignore-mode :defer t :ensure t)
@@ -95,25 +94,21 @@
   :config
   (lambda ()
     (setq 'enh-ruby-bounce-deep-indent 1)
-    (use-package company-inf-ruby :diminish t)
+    (use-package company-inf-ruby)
     (use-package ruby-electric
       :ensure t
-      :diminish t
       :config
       (add-hook 'enh-ruby-mode-hook 'ruby-electric-mode))
     (use-package yard-mode
       :ensure t
-      :diminish t
       :config
       (add-hook 'enh-ruby-mode-hook 'yard-mode))
     (use-package robe
       :ensure t
-      :diminish t
       :config
       (add-hook 'enh-ruby-mode-hook 'robe-mode))
     (use-package ruby-block
       :ensure t
-      :diminish t
       :config
       (add-hook 'enh-ruby-mode-hook 'ruby-block-mode))
     (use-package inf-ruby
