@@ -2,7 +2,7 @@
 ;;; Commentary:
 ;;; Installs and configures packages to make my Emacs environment work.
 ;;; Code:
-(set-frame-font "Inconsolata-dz")
+(set-frame-font "Consolas-14")
 (setq whitespace-line-column 120)
 (tool-bar-mode -1)
 (menu-bar-mode -1)
@@ -94,7 +94,7 @@
   :interpreter ("ruby" . enh-ruby-mode)
   :config
   (lambda ()
-    (set 'enh-ruby-bounce-deep-indent 1)
+    (setq 'enh-ruby-bounce-deep-indent 1)
     (use-package company-inf-ruby :diminish t)
     (use-package ruby-electric
       :ensure t
