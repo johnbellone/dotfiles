@@ -1,7 +1,19 @@
 {
     "cookbook": {
-        "copyright": "John Bellone (<jbellone@bloomberg.net>)",
+        "copyright": "Bloomberg Finance L.P.",
+        "email": "jbellone@bloomberg.net",
         "license": "apachev2",
-        "email": "jbellone@bloomberg.net"
+        "allowed_licenses": ["apachev2", "mit", "bsd"],
+        "raise_license_exception": true
+    },
+    "vagrant": {
+        "vm": {
+            "box": "opscode-centos-6.6"
+            "box_url": "http://opscode-vm-bento.s3.amazonaws.com/vagrant/virtualbox/opscode_centos-6.6_chef-provisionerless.box",
+            "provision": "chef_zero"
+        },
+        "omnibus": {
+            "enabled": true
+        }
     }
 }
