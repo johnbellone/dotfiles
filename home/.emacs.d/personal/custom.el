@@ -25,7 +25,7 @@
   :defer t
   :ensure t
   :config
-  (lambda ()
+  (progn
     (use-package org-ac :ensure t)
     (use-package org-autolist :ensure t)
     (use-package org-grep :ensure t)
@@ -55,7 +55,7 @@
 (use-package helm
   :ensure t
   :config
-  (lambda ()
+  (progn
     (use-package ac-helm
       :ensure t
       :config
@@ -77,14 +77,14 @@
   :defer t
   :ensure t
   :config
-  (lambda ()
+  (progn
     (use-package go-autocomplete
       :ensure t
       :config
       (add-to-list 'ac-modes 'go-mode))
     (use-package go-eldoc :ensure t)
     (add-hook 'go-mode-hook
-              (lambda ()
+              (progn
                 (add-hook 'before-save-hook 'gofmt-before-save)))))
 
 (use-package enh-ruby-mode
@@ -92,29 +92,48 @@
   :mode ("\\.rb$" . enh-ruby-mode)
   :interpreter ("ruby" . enh-ruby-mode)
   :config
-  (lambda ()
-    (setq 'enh-ruby-bounce-deep-indent 1)
-    (use-package company-inf-ruby)
-    (use-package ruby-electric
-      :ensure t
-      :config
-      (add-hook 'enh-ruby-mode-hook 'ruby-electric-mode))
-    (use-package yard-mode
-      :ensure t
-      :config
-      (add-hook 'enh-ruby-mode-hook 'yard-mode))
-    (use-package robe
-      :ensure t
-      :config
-      (add-hook 'enh-ruby-mode-hook 'robe-mode))
-    (use-package ruby-block
-      :ensure t
-      :config
-      (add-hook 'enh-ruby-mode-hook 'ruby-block-mode))
-    (use-package inf-ruby
-      :ensure t
-      :config
-      (add-hook 'enh-ruby-mode-hook 'inf-ruby-minor-mode))))
+  (progn
+    (require 'smartparens-ruby)
+    (add-hook 'enh-ruby-mode-hook 'smartparens-mode)
+
+    (setq-default enh-ruby-extra-keywords (list "public" "private" "protected" "include" "extend"))
+    (erm-reset)
+    (setq enh-ruby-bounce-deep-indent t)
+    (setq enh-ruby-hanging-brace-indent-level 2)
+    (setq enh-ruby-check-syntax nil)
+
+    (add-to-list 'auto-mode-alist '("Rakefile$" . enh-ruby-mode))
+    (add-to-list 'auto-mode-alist '("Capfile$" . enh-ruby-mode))
+    (add-to-list 'auto-mode-alist '("\\.rake$" . enh-ruby-mode))
+    (add-to-list 'auto-mode-alist '("Gemfile$" . enh-ruby-mode))
+    (add-to-list 'auto-mode-alist '("Berksfile$" . enh-ruby-mode))
+    (add-to-list 'auto-mode-alist '("\\.gemspec$" . enh-ruby-mode))
+    (add-to-list 'auto-mode-alist '("\\.ru$" . enh-ruby-mode))
+    (add-to-list 'auto-mode-alist '("Guardfile$" . enh-ruby-mode))
+    (add-to-list 'auto-mode-alist '("Thorfile$" . enh-ruby-mode))
+    (add-to-list 'auto-mode-alist '("Vagrantfile$" . enh-ruby-mode))))
+
+(use-package company-inf-ruby)
+(use-package ruby-electric
+  :ensure t
+  :config
+  (add-hook 'enh-ruby-mode-hook 'ruby-electric-mode))
+(use-package yard-mode
+  :ensure t
+  :config
+  (add-hook 'enh-ruby-mode-hook 'yard-mode))
+(use-package robe
+  :ensure t
+  :config
+  (add-hook 'enh-ruby-mode-hook 'robe-mode))
+(use-package ruby-block
+  :ensure t
+  :config
+  (add-hook 'enh-ruby-mode-hook 'ruby-block-mode))
+(use-package inf-ruby
+  :ensure t
+  :config
+  (add-hook 'enh-ruby-mode-hook 'inf-ruby-minor-mode))
 
 ;; http://www.emacswiki.org/emacs/EmacsClient#WMFocus
 (add-hook 'server-switch-hook
