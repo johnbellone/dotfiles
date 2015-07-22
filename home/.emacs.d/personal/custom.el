@@ -10,11 +10,11 @@
 (prelude-require-packages '(use-package))
 (require 'use-package)
 
-(use-package gitattributes-mode :defer t :ensure t)
-(use-package gitconfig-mode :defer t :ensure t)
-(use-package gitignore-mode :defer t :ensure t)
-(use-package google-c-style :defer t :ensure t)
-(use-package ssh-config-mode :defer t :ensure t)
+(use-package gitattributes-mode :ensure t)
+(use-package gitconfig-mode :ensure t)
+(use-package gitignore-mode :ensure t)
+(use-package google-c-style :ensure t)
+(use-package ssh-config-mode :ensure t)
 
 (use-package osx-browse :ensure t)
 (use-package osx-clipboard :ensure t)
@@ -22,19 +22,23 @@
 (use-package osx-pseudo-daemon :ensure t)
 
 (use-package org
-  :defer t
   :ensure t
   :config
   (progn
-    (use-package org-ac :ensure t)
-    (use-package org-autolist :ensure t)
-    (use-package org-grep :ensure t)
-    (use-package org-journal :ensure t)
-    (use-package org-pandoc :ensure t)
-    (use-package org-projectile :ensure t)
-    (use-package orgit :ensure t)
-    (use-package ox-pandoc :ensure t)
-    (use-package ox-reveal :ensure t)))
+    (use-package org-ac)
+    (use-package org-autolist)
+    (use-package org-journal)
+    (use-package org-projectile)
+    (use-package orgit)
+    (use-package ox-pandoc)
+    (use-package ox-reveal)
+
+    (use-package org2jekyll
+      :config
+      (progn
+        (setq org2jekyll-blog-author "jbellone")
+        (setq org2jekyll-jekyll-posts-dir "_posts/")
+        (setq org2jekyll-source-directory (expand-file-name "~/Projects/thoughtlessbanter.com"))))))
 
 (use-package chruby
   :ensure t
@@ -44,13 +48,29 @@
 (use-package company
   :ensure t
   :config
-  (add-hook 'after-init-hook 'global-company-mode))
+  (progn
+    (use-package company-inf-ruby)
+    (add-hook 'after-init-hook 'global-company-mode)))
 
 (use-package json-mode
-  :defer t
   :ensure t
   :config
   (use-package flymake-json :ensure t))
+
+(use-package cider
+  :ensure t
+  :config
+  (progn
+    (use-package ac-cider)
+    (use-package cider-decompile)
+    (use-package cider-eval-sexp-fu)
+    (use-package cider-profile)
+    (use-package cider-spy)
+    (use-package clojure-mode-extra-font-locking)
+    (use-package clj-refactor)
+    (use-package cljr-helm)
+    (use-package flycheck-clojure)
+    (use-package inf-clojure)))
 
 (use-package helm
   :ensure t
@@ -62,19 +82,16 @@
       (add-to-list 'ac-modes 'helm-mode))))
 
 (use-package coffee-mode
-  :defer t
   :ensure t
   :config
   (use-package flymake-coffee :ensure t))
 
 (use-package yaml-mode
-  :defer t
   :ensure t
   :config
   (use-package flymake-yaml :ensure t))
 
 (use-package go-mode
-  :defer t
   :ensure t
   :config
   (progn
@@ -113,7 +130,6 @@
     (add-to-list 'auto-mode-alist '("Thorfile$" . enh-ruby-mode))
     (add-to-list 'auto-mode-alist '("Vagrantfile$" . enh-ruby-mode))))
 
-(use-package company-inf-ruby)
 (use-package ruby-electric
   :ensure t
   :config
