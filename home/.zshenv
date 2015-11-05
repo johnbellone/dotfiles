@@ -16,6 +16,6 @@ if ! command -v chruby > /dev/null; then
     fi
 fi
 
-EDITOR='emacsclient -t'
+export EDITOR="emacsclient -t"
 
 typeset -U path MANPATH RUBIES EDITOR
