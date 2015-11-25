@@ -52,3 +52,5 @@
 	protocol = https
 [gh]
 	protocol = https	
+[http "https://bbgithub.dev.bloomberg.com/"]
+	proxy = 
