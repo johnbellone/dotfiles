@@ -9,11 +9,10 @@ setopt EXTENDED_HISTORY
 setopt HIST_IGNORE_ALL_DUPS
 setopt HIST_REDUCE_BLANKS
 
-if command -v gls; then
-    alias ls="gls -F"
+if command -v gls >/dev/null; then
+    alias ls="gls -F --color=auto"
 fi
 
-alias ls="ls --color=auto"
 alias l="ls -Cfh"
 alias ll="ls -AclhsF"
 alias la="ls -Ah"
