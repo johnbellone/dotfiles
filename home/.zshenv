@@ -1,9 +1,12 @@
 #!/usr/bin/env zsh
-path=(bin $HOME/bin/$MACHTYPE-$OSTYPE $HOME/bin /usr/local/bin /usr/bin /usr/local/sbin /usr/sbin /bin /sbin)
+HISTFILE=$HOME/.zsh_history
+HISTSIZE=10000000
+SAVEHIST=10000000
+PATH=(bin $HOME/bin/$MACHTYPE-$OSTYPE $HOME/bin /usr/local/bin /usr/bin /usr/local/sbin /usr/sbin /bin /sbin)
 
 # Handle homebrew on OSX installing coreutils into an alternate directory.
 [ -d /usr/local/opt/coreutils/libexec/gnubin ] && \
-    path+=(/usr/local/opt/coreutils/libexec/gnubin)
+    PATH+=(/usr/local/opt/coreutils/libexec/gnubin)
 [ -d /usr/local/opt/coreutils/libexec/gnuman ] && \
     MANPATH=/usr/local/opt/coreutils/libexec/gnuman
 
@@ -17,5 +20,7 @@ if ! command -v chruby > /dev/null; then
 fi
 
 export EDITOR="emacsclient -t"
+export CLICOLOR=1
+export LSCOLORS="gxBxhxDxfxhxhxhxhxcxcx"
 
 typeset -U path MANPATH RUBIES EDITOR
