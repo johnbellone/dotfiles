@@ -2,13 +2,16 @@
 ;;; Commentary:
 ;;; Installs and configures packages to make my Emacs environment work.
 ;;; Code:
-(set-frame-font "Consolas-14")
 (setq whitespace-line-column 120)
 (tool-bar-mode -1)
 (menu-bar-mode -1)
 
 (prelude-require-packages '(use-package))
 (require 'use-package)
+
+(define-key emacs-lisp-mode-map (kbd "<S-iso-lefttab>")  'lisp-complete-symbol)
+(define-key emacs-lisp-mode-map (kbd "<backtab>")  'lisp-complete-symbol)
+(define-key emacs-lisp-mode-map (kbd "<S-tab>")  'lisp-complete-symbol)
 
 (use-package gitattributes-mode :ensure t)
 (use-package gitconfig-mode :ensure t)
