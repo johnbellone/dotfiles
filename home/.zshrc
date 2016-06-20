@@ -32,3 +32,10 @@ promptinit
 
 PROMPT="%F{216}%~ %F{229}%# %f"
 echo "uptime $(uptime)"
+
+butcher() {
+    for x; do
+        knife node delete -y $x || true
+        knife client delete -y $x || true
+    done
+}
