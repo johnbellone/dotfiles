@@ -21,6 +21,7 @@
 
 (if (eq system-type "darwin")
     (progn
+      (ns-set-resource nil "ApplePressAndHoldEnabled" "NO")
       (use-package osx-browse :ensure t)
       (use-package osx-clipboard :ensure t)
       (use-package osx-lib :ensure t)
