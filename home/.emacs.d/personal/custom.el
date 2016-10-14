@@ -49,7 +49,7 @@
 (use-package chruby
   :ensure t
   :config
-  (chruby "2.2"))
+  (chruby "2.3"))
 
 (use-package company
   :ensure t
@@ -196,7 +196,7 @@
    [unspecified "#28211c" "#cf6a4c" "#54be0d" "#f9ee98" "#5ea6ea" "#9b859d" "#5ea6ea" "#8a8986"])
  '(custom-safe-themes
    (quote
-    ("b110da1a5934e91717b5c490709aba3c60eb4595194bbf9fdcbb97d247c70cfa" "db9feb330fd7cb170b01b8c3c6ecdc5179fc321f1a4824da6c53609b033b2810" default)))
+    ("40f6a7af0dfad67c0d4df2a1dd86175436d79fc69ea61614d668a635c2cd94ab" "e033c4abd259afac2475abd9545f2099a567eb0e5ec4d1ed13567a77c1919f8f" "e24679edfdea016519c0e2d4a5e57157a11f928b7ef4361d00c23a7fe54b8e01" "d1a42ed39a15a843cccadf107ee0242b5f78bfbb5b70ba3ce19f3ea9fda8f52d" "cdfb22711f64d0e665f40b2607879fcf2607764b2b70d672ddaa26d2da13049f" "b110da1a5934e91717b5c490709aba3c60eb4595194bbf9fdcbb97d247c70cfa" "db9feb330fd7cb170b01b8c3c6ecdc5179fc321f1a4824da6c53609b033b2810" default)))
  '(fci-rule-color "#383838")
  '(nrepl-message-colors
    (quote
