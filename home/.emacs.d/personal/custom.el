@@ -6,6 +6,12 @@
 (tool-bar-mode -1)
 (menu-bar-mode -1)
 
+(setq redisplay-dont-pause t
+      scroll-margin 1
+      scroll-step 1
+      scroll-conservatively 10000
+      scroll-preserve-screen-position 1)
+
 (prelude-require-packages '(use-package))
 (require 'use-package)
 
@@ -16,7 +22,12 @@
 (use-package gitattributes-mode :ensure t)
 (use-package gitconfig-mode :ensure t)
 (use-package gitignore-mode :ensure t)
-(use-package google-c-style :ensure t)
+(use-package google-c-style
+  :ensure t
+  :config
+  (progn
+    (add-hook 'c-mode-common-hook 'google-set-c-style)
+    (add-hook 'c-mode-common-hook 'google-make-newline-indent)))
 (use-package ssh-config-mode :ensure t)
 
 (if (eq system-type "darwin")
@@ -190,6 +201,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(TeX-engine (quote xetex))
  '(ansi-color-names-vector
    ["#28211c" "#cf6a4c" "#54be0d" "#f9ee98" "#5ea6ea" "#9b859d" "#5ea6ea" "#8a8986"])
  '(ansi-term-color-vector
