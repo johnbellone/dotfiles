@@ -39,3 +39,5 @@ butcher() {
         knife client delete -y $x || true
     done
 }
+
+[ -f /Users/jbellone/.travis/travis.sh ] && source /Users/jbellone/.travis/travis.sh
