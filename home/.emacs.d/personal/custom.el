@@ -10,7 +10,8 @@
       scroll-margin 1
       scroll-step 1
       scroll-conservatively 10000
-      scroll-preserve-screen-position 1)
+      scroll-preserve-screen-position 1
+      prelude-whitespace nil)
 
 (prelude-require-packages '(use-package))
 (require 'use-package)
@@ -118,10 +119,7 @@
       :ensure t
       :config
       (add-to-list 'ac-modes 'go-mode))
-    (use-package go-eldoc :ensure t)
-    (add-hook 'go-mode-hook
-              (progn
-                (add-hook 'before-save-hook 'gofmt-before-save)))))
+    (use-package go-eldoc :ensure t)))
 
 (use-package enh-ruby-mode
   :ensure t
