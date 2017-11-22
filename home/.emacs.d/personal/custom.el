@@ -2,14 +2,34 @@
 ;;; Commentary:
 ;;; Installs and configures packages to make my Emacs environment work.
 ;;; Code:
-(setq whitespace-line-column 120)
-(tool-bar-mode -1)
-(menu-bar-mode -1)
 
-(setq redisplay-dont-pause t
-      scroll-margin 1
+(require 'package)
+
+(add-to-list 'package-archives
+             '("melpa" . "https://melpa.org/packages/") t)
+
+(setq user-full-name "John Bellone"
+      user-mail-address "john.bellone.jr@gmail.com")
+
+(setq package-user-dir (expand-file-name "elpa" user-emacs-directory))
+(package-initialize)
+(unless package-archive-contents
+  (package-refresh-contents))
+
+(setq load-prefer-newer t
+      gc-cons-threshold 50000000
+      large-file-warning-threshold 100000000)
+
+(when (fboundp 'tool-bar-mode)
+  (tool-bar-mode -1))
+
+(when (fboundp 'menu-bar-mode)
+  (menu-bar-mode -1))
+
+(setq whitespace-line-column 120
+      scroll-margin 0
       scroll-step 1
-      scroll-conservatively 10000
+      scroll-conservatively 100000
       scroll-preserve-screen-position 1
       prelude-whitespace nil)
 
@@ -19,6 +39,18 @@
 (define-key emacs-lisp-mode-map (kbd "<S-iso-lefttab>")  'lisp-complete-symbol)
 (define-key emacs-lisp-mode-map (kbd "<backtab>")  'lisp-complete-symbol)
 (define-key emacs-lisp-mode-map (kbd "<S-tab>")  'lisp-complete-symbol)
+
+(use-package org
+  :ensure t
+  :bind (("C-c l" . org-store-link)
+         ("C-c a" . org-agenda))
+  :config
+  (progn
+    (setq org-startup-indented t
+          org-startup-folded "showall"
+          org-directory "~/org"
+          org-src-fontify-natively t
+          org-use-speed-commands t)))
 
 (use-package gitattributes-mode :ensure t)
 (use-package gitconfig-mode :ensure t)
@@ -201,43 +233,9 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(TeX-engine (quote xetex))
- '(ansi-color-names-vector
-   ["#28211c" "#cf6a4c" "#54be0d" "#f9ee98" "#5ea6ea" "#9b859d" "#5ea6ea" "#8a8986"])
- '(ansi-term-color-vector
-   [unspecified "#28211c" "#cf6a4c" "#54be0d" "#f9ee98" "#5ea6ea" "#9b859d" "#5ea6ea" "#8a8986"] t)
- '(custom-safe-themes
-   (quote
-    ("40f6a7af0dfad67c0d4df2a1dd86175436d79fc69ea61614d668a635c2cd94ab" "e033c4abd259afac2475abd9545f2099a567eb0e5ec4d1ed13567a77c1919f8f" "e24679edfdea016519c0e2d4a5e57157a11f928b7ef4361d00c23a7fe54b8e01" "d1a42ed39a15a843cccadf107ee0242b5f78bfbb5b70ba3ce19f3ea9fda8f52d" "cdfb22711f64d0e665f40b2607879fcf2607764b2b70d672ddaa26d2da13049f" "b110da1a5934e91717b5c490709aba3c60eb4595194bbf9fdcbb97d247c70cfa" "db9feb330fd7cb170b01b8c3c6ecdc5179fc321f1a4824da6c53609b033b2810" default)))
- '(fci-rule-color "#383838")
- '(nrepl-message-colors
-   (quote
-    ("#CC9393" "#DFAF8F" "#F0DFAF" "#7F9F7F" "#BFEBBF" "#93E0E3" "#94BFF3" "#DC8CC3")))
  '(package-selected-packages
    (quote
-    (ox-gfm terraform-mode markdown-mode ruby-block robe yard-mode ruby-electric enh-ruby-mode go-autocomplete flymake-yaml flymake-coffee ac-helm flymake-json chruby ssh-config-mode google-c-style gitattributes-mode use-package yaml-mode web-mode scss-mode geiser ensime scala-mode yari inf-ruby ruby-tools company-anaconda anaconda-mode flycheck-ocaml merlin utop tuareg company-auctex cdlatex auctex json-mode js2-mode haskell-mode gotest go-projectile go-eldoc company-go go-mode alchemist elixir-mode erlang rainbow-mode elisp-slime-nav slime coffee-mode cider clojure-mode rainbow-delimiters key-chord company helm-ag helm-descbinds helm-projectile helm smex ido-ubiquitous flx-ido vkill exec-path-from-shell zop-to-char zenburn-theme which-key volatile-highlights undo-tree smartrep smartparens smart-mode-line operate-on-number move-text magit projectile ov imenu-anywhere guru-mode grizzl god-mode gitignore-mode gitconfig-mode git-timemachine gist flycheck expand-region epl easy-kill diminish diff-hl discover-my-major dash crux browse-kill-ring beacon anzu ace-window)))
- '(vc-annotate-background "#2B2B2B")
- '(vc-annotate-color-map
-   (quote
-    ((20 . "#BC8383")
-     (40 . "#CC9393")
-     (60 . "#DFAF8F")
-     (80 . "#D0BF8F")
-     (100 . "#E0CF9F")
-     (120 . "#F0DFAF")
-     (140 . "#5F7F5F")
-     (160 . "#7F9F7F")
-     (180 . "#8FB28F")
-     (200 . "#9FC59F")
-     (220 . "#AFD8AF")
-     (240 . "#BFEBBF")
-     (260 . "#93E0E3")
-     (280 . "#6CA0A3")
-     (300 . "#7CB8BB")
-     (320 . "#8CD0D3")
-     (340 . "#94BFF3")
-     (360 . "#DC8CC3"))))
- '(vc-annotate-very-old-color "#DC8CC3"))
+    (enh-ruby-mode markdown-mode ssh-config-mode google-c-style gitattributes-mode use-package yaml-mode web-mode scss-mode geiser ensime scala-mode yari inf-ruby ruby-tools company-anaconda anaconda-mode flycheck-ocaml merlin utop tuareg company-auctex cdlatex auctex json-mode js2-mode haskell-mode gotest go-projectile go-eldoc company-go go-mode alchemist elixir-mode erlang rainbow-mode elisp-slime-nav slime coffee-mode cider clojure-mode rainbow-delimiters key-chord company helm-ag helm-descbinds helm-projectile helm smex ido-completing-read+ flx-ido vkill exec-path-from-shell zop-to-char zenburn-theme which-key volatile-highlights undo-tree smartrep smartparens smart-mode-line operate-on-number move-text magit projectile ov imenu-anywhere guru-mode grizzl god-mode gitignore-mode gitconfig-mode git-timemachine gist flycheck expand-region epl editorconfig easy-kill diminish diff-hl discover-my-major dash crux browse-kill-ring beacon anzu ace-window))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
