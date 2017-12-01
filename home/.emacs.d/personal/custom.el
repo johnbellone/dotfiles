@@ -42,8 +42,6 @@
 
 (use-package org
   :ensure t
-  :bind (("C-c l" . org-store-link)
-         ("C-c a" . org-agenda))
   :config
   (progn
     (setq org-startup-indented t
@@ -153,6 +151,11 @@
       (add-to-list 'ac-modes 'go-mode))
     (use-package go-eldoc :ensure t)))
 
+(use-package salt-mode :ensure t)
+(use-package jinja2-mode
+  :ensure t
+  :mode ("\\.jinja$" . jinja2-mode))
+
 (use-package enh-ruby-mode
   :ensure t
   :mode ("\\.rb$" . enh-ruby-mode)
@@ -235,7 +238,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (enh-ruby-mode markdown-mode ssh-config-mode google-c-style gitattributes-mode use-package yaml-mode web-mode scss-mode geiser ensime scala-mode yari inf-ruby ruby-tools company-anaconda anaconda-mode flycheck-ocaml merlin utop tuareg company-auctex cdlatex auctex json-mode js2-mode haskell-mode gotest go-projectile go-eldoc company-go go-mode alchemist elixir-mode erlang rainbow-mode elisp-slime-nav slime coffee-mode cider clojure-mode rainbow-delimiters key-chord company helm-ag helm-descbinds helm-projectile helm smex ido-completing-read+ flx-ido vkill exec-path-from-shell zop-to-char zenburn-theme which-key volatile-highlights undo-tree smartrep smartparens smart-mode-line operate-on-number move-text magit projectile ov imenu-anywhere guru-mode grizzl god-mode gitignore-mode gitconfig-mode git-timemachine gist flycheck expand-region epl editorconfig easy-kill diminish diff-hl discover-my-major dash crux browse-kill-ring beacon anzu ace-window))))
+    (salt-mode jinja2-mode enh-ruby-mode markdown-mode ssh-config-mode google-c-style gitattributes-mode use-package yaml-mode web-mode scss-mode geiser ensime scala-mode yari inf-ruby ruby-tools company-anaconda anaconda-mode flycheck-ocaml merlin utop tuareg company-auctex cdlatex auctex json-mode js2-mode haskell-mode gotest go-projectile go-eldoc company-go go-mode alchemist elixir-mode erlang rainbow-mode elisp-slime-nav slime coffee-mode cider clojure-mode rainbow-delimiters key-chord company helm-ag helm-descbinds helm-projectile helm smex ido-completing-read+ flx-ido vkill exec-path-from-shell zop-to-char zenburn-theme which-key volatile-highlights undo-tree smartrep smartparens smart-mode-line operate-on-number move-text magit projectile ov imenu-anywhere guru-mode grizzl god-mode gitignore-mode gitconfig-mode git-timemachine gist flycheck expand-region epl editorconfig easy-kill diminish diff-hl discover-my-major dash crux browse-kill-ring beacon anzu ace-window))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
