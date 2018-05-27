@@ -17,13 +17,4 @@ export LS_COLORS='di=38;5;108:fi=00:*svn-commit.tmp=31:ln=38;5;116:ex=38;5;186'
 [ -d /Library/TeX/texbin ] && \
     path+=(/Library/TeX/texbin)
 
-# Automatically source chruby if it exists on disk and not already loaded up.
-if ! command -v chruby > /dev/null; then
-    if [ -d /usr/local/share/chruby ]; then
-        . /usr/local/share/chruby/chruby.sh
-    elif [ -d /usr/local/opt/chruby ]; then
-        . /usr/local/opt/chruby/share/chruby/chruby.sh
-    fi
-fi
-
 typeset -U path MANPATH RUBIES EDITOR

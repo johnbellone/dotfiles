@@ -40,4 +40,5 @@ butcher() {
     done
 }
 
-[ -f /Users/jbellone/.travis/travis.sh ] && source /Users/jbellone/.travis/travis.sh
+BASE16_SHELL=$HOME/.config/base16-shell/
+[ -n "$PS1" ] && [ -s $BASE16_SHELL/profile_helper.sh ] && eval "$($BASE16_SHELL/profile_helper.sh)"
