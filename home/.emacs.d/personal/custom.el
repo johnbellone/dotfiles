@@ -36,9 +36,23 @@
 (prelude-require-packages '(use-package))
 (require 'use-package)
 
+(use-package base16-theme
+  :ensure t
+  :config
+  (load-theme 'base16-zenburn t))
+
 (define-key emacs-lisp-mode-map (kbd "<S-iso-lefttab>")  'lisp-complete-symbol)
 (define-key emacs-lisp-mode-map (kbd "<backtab>")  'lisp-complete-symbol)
 (define-key emacs-lisp-mode-map (kbd "<S-tab>")  'lisp-complete-symbol)
+
+(use-package rjsx-mode
+  :init
+  (add-to-list 'auto-mode-alist '("\\.js$" . rjsx-mode))
+  :config
+  (setq web-mode-code-indent-offset 2)
+  (setq web-mode-indent-style 2)
+  (setq js2-basic-offset 2)
+  (setq js-indent-level 2))
 
 (use-package org
   :init
@@ -52,8 +66,13 @@
          ("\C-c c" . org-capture))
   :config
   (setq org-directory "~/org"
-        org-default-notes-file "~/org/refile.org"
-        org-agenda-files (quote "~/org"))
+        org-default-notes-file "~/org/todo.org"
+        org-agenda-files '("~/org/bloomberg.org"
+                           "~/org/todo.org"
+                           "~/org/personal.org"
+                           "~/org/someday.org")
+        org-refile-targets '((nil :maxlevel . 9)
+                             (org-agenda-files :maxlevel . 3)))
   (defvar org-default-diary-file "~/org/diary.org")
   (setq org-startup-indented t
         org-startup-folded "showall"
@@ -64,6 +83,10 @@
         org-src-fontify-natively t
         org-use-speed-commands t)
   (setq org-columns-default-format "%50ITEM(Task) %10Effort(Effort){:} %10CLOCKSUM %16TIMESTAMP_IA")
+  (setq org-use-fast-todo-selection t)
+  (setq org-todo-keywords
+        '((sequence "TODO(t)" "NEXT(n)" "|" "DONE(d)")
+          (sequence "WAITING(w@/!)" "INACTIVE(i@/!)" "|" "CANCELLED(c@/!)" "MEETING")))
   (setq org-todo-keyword-faces
         '(("TODO" :foreground "red" :weight bold)
           ("NEXT" :foreground "blue" :weight bold)
@@ -79,7 +102,33 @@
           (done ("WAITING") ("INACTIVE"))
           ("TODO" ("WAITING") ("CANCELLED") ("INACTIVE"))
           ("NEXT" ("WAITING") ("CANCELLED") ("INACTIVE"))
-          ("DONE" ("WAITING") ("CANCELLED") ("INACTIVE")))))
+          ("DONE" ("WAITING") ("CANCELLED") ("INACTIVE"))))
+  (setq org-tag-alist '(("@work" . ?w) ("@home" . ?h)))
+  (defvar org-capture-templates
+    '(("t" "Task" entry (file org-default-notes-file "Tasks")
+       "* TODO %?\n%u\n")
+      ("m" "Meeting" entry (file org-default-notes-file)
+       "* MEETING with %? :MEETING:\n%t")
+      ("d" "Diary" entry (file+datetree "~/org/diary.org")
+       "* %?\n%U\n" :clock-in t :clock-resume t)
+      ("D" "Daily Log" entry (file "~/org/daily-log.org")
+       "* %u %?\n*Summary*: \n\n*Problem*: \n\n*Insight*: \n\n*Tomorrow*: ")
+      ("i" "Idea" entry (file org-default-notes-file)
+       "* %? :IDEA: \n%u")
+      ("n" "Next Task" entry (file+headline org-default-notes-file "Tasks")
+       "** NEXT %? \nDEADLINE: %t")))
+  (setq org-refile-use-outline-path t
+        org-outline-path-complete-in-steps nil
+        org-refile-allow-creating-parent-nodes 'confirm
+        org-archive-location "archive/%s_archive::")
+  (defvar org-archive-file-header-format "#+FILETAGS: ARCHIVE\nArchived entries from file %s\n")
+  (setq org-enforce-todo-dependencies t
+        org-agenda-inhibit-startup nil
+        org-agenda-dim-blocked-tasks nil)
+  (setq org-agenda-time-grid
+        '((daily today require-timed)
+          "----------------"
+          (800 1200 1600 2000))))
                                       
 (use-package gitattributes-mode :ensure t)
 (use-package gitconfig-mode :ensure t)
@@ -188,9 +237,12 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(custom-safe-themes
+   (quote
+    ("fee4e306d9070a55dce4d8e9d92d28bd9efe92625d2ba9d4d654fc9cd8113b7f" "3be1f5387122b935a26e02795196bc90860c57a62940f768f138b02383d9a257" "6145e62774a589c074a31a05dfa5efdf8789cf869104e905956f0cbd7eda9d0e" "4feee83c4fbbe8b827650d0f9af4ba7da903a5d117d849a3ccee88262805f40d" "6daa09c8c2c68de3ff1b83694115231faa7e650fdbb668bc76275f0f2ce2a437" "fede08d0f23fc0612a8354e0cf800c9ecae47ec8f32c5f29da841fe090dfc450" "8e51e44e5b079b2862335fcc5ff0f1e761dc595c7ccdb8398094fb8e088b2d50" "25c06a000382b6239999582dfa2b81cc0649f3897b394a75ad5a670329600b45" "85e6bb2425cbfeed2f2b367246ad11a62fb0f6d525c157038a0d0eaaabc1bfee" "50d07ab55e2b5322b2a8b13bc15ddf76d7f5985268833762c500a90e2a09e7aa" "12670281275ea7c1b42d0a548a584e23b9c4e1d2dabb747fd5e2d692bcd0d39b" "aea30125ef2e48831f46695418677b9d676c3babf43959c8e978c0ad672a7329" "36282815a2eaab9ba67d7653cf23b1a4e230e4907c7f110eebf3cdf1445d8370" "2a998a3b66a0a6068bcb8b53cd3b519d230dd1527b07232e54c8b9d84061d48d" "16dd114a84d0aeccc5ad6fd64752a11ea2e841e3853234f19dc02a7b91f5d661" "dd4628d6c2d1f84ad7908c859797b24cc6239dfe7d71b3363ccdd2b88963f336" "a62f0662e6aa7b05d0b4493a8e245ab31492765561b08192df61c9d1c7e1ddee" default)))
  '(package-selected-packages
    (quote
-    (orca org-agenda-property org-doing org-ref osx-clipboard osx-lib osx-plist osx-trash org-projectile-helm docker docker-api docker-compose-mode docker-tramp dockerfile-mode groovy-mode flycheck-plantuml plantuml-mode protobuf-mode markdown-mode ac-c-headers ac-cider ac-etags ac-html ac-inf-ruby ace-flyspell cider-decompile cider-eval-sexp-fu cider-hydra cider-profile cider-spy clj-refactor cljr-helm clojure-mode-extra-font-locking flycheck-clojure inf-clojure org-ac org-autolist org-journal org-projectile company-inf-ruby zop-to-char zenburn-theme yari yard-mode which-key web-mode volatile-highlights vkill use-package undo-tree ssh-config-mode smex smartrep smartparens smart-mode-line slime salt-mode ruby-tools ruby-electric ruby-block robe rainbow-mode rainbow-delimiters racer ov operate-on-number move-text magit key-chord json-mode js2-mode jinja2-mode imenu-anywhere ido-completing-read+ helm-projectile helm-descbinds helm-ag guru-mode grizzl gotest google-c-style god-mode go-projectile go-autocomplete gitignore-mode gitconfig-mode gitattributes-mode git-timemachine gist geiser flymake-yaml flymake-json flymake-coffee flycheck-rust flx-ido expand-region exec-path-from-shell enh-ruby-mode elisp-slime-nav editorconfig easy-kill discover-my-major diminish diff-hl crux counsel company-go company-auctex company-anaconda coffee-mode cider chruby cdlatex cargo browse-kill-ring beacon anzu ace-window ac-helm)))
+    (base16-theme fish-completion fish-mode osx-pseudo-daemon osx-browse nginx-mode toml-mode flycheck-clang-analyzer ac-clang clang-format company-c-headers csharp-mode ac-js2 discover-js2-refactor js2-highlight-vars js2-refactor rjsx-mode scss-mode typescript-mode jq-mode js-auto-beautify js-doc json-rpc jsx-mode gitignore-templates cmake-mode powershell csv-mode orca org-agenda-property org-doing org-ref osx-clipboard osx-lib osx-plist osx-trash org-projectile-helm docker docker-api docker-compose-mode docker-tramp dockerfile-mode groovy-mode flycheck-plantuml plantuml-mode protobuf-mode markdown-mode ac-c-headers ac-cider ac-etags ac-html ac-inf-ruby ace-flyspell cider-decompile cider-eval-sexp-fu cider-hydra cider-profile cider-spy clj-refactor cljr-helm clojure-mode-extra-font-locking flycheck-clojure inf-clojure org-ac org-autolist org-journal org-projectile company-inf-ruby zop-to-char zenburn-theme yari yard-mode which-key web-mode volatile-highlights vkill use-package undo-tree ssh-config-mode smex smartrep smartparens smart-mode-line slime salt-mode ruby-tools ruby-electric ruby-block robe rainbow-mode rainbow-delimiters racer ov operate-on-number move-text magit key-chord json-mode jinja2-mode imenu-anywhere ido-completing-read+ helm-projectile helm-descbinds helm-ag guru-mode grizzl gotest google-c-style god-mode go-projectile go-autocomplete gitignore-mode gitconfig-mode gitattributes-mode git-timemachine gist geiser flymake-yaml flymake-json flymake-coffee flycheck-rust flx-ido expand-region exec-path-from-shell enh-ruby-mode elisp-slime-nav editorconfig easy-kill discover-my-major diminish diff-hl crux counsel company-go company-auctex company-anaconda coffee-mode cider chruby cdlatex cargo browse-kill-ring beacon anzu ace-window ac-helm)))
  '(plantuml-jar-path "/usr/local/Cellar/plantuml/1.2018.1/libexec/plantuml.jar"))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
