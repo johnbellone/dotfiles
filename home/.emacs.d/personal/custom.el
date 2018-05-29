@@ -33,6 +33,11 @@
       scroll-preserve-screen-position 1
       prelude-whitespace nil)
 
+(if (display-graphic-p)
+    (progn
+      (setq default-frame-alist '((width . 120) (height . 80)))
+      (set-face-attribute 'default nil :family "Hack" :height 140 :weight 'normal)))
+
 (prelude-require-packages '(use-package))
 (require 'use-package)
 
@@ -237,13 +242,43 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(company-quickhelp-color-background "#4F4F4F")
+ '(company-quickhelp-color-foreground "#DCDCCC")
+ '(custom-enabled-themes (quote (base16-zenburn)))
  '(custom-safe-themes
    (quote
-    ("fee4e306d9070a55dce4d8e9d92d28bd9efe92625d2ba9d4d654fc9cd8113b7f" "3be1f5387122b935a26e02795196bc90860c57a62940f768f138b02383d9a257" "6145e62774a589c074a31a05dfa5efdf8789cf869104e905956f0cbd7eda9d0e" "4feee83c4fbbe8b827650d0f9af4ba7da903a5d117d849a3ccee88262805f40d" "6daa09c8c2c68de3ff1b83694115231faa7e650fdbb668bc76275f0f2ce2a437" "fede08d0f23fc0612a8354e0cf800c9ecae47ec8f32c5f29da841fe090dfc450" "8e51e44e5b079b2862335fcc5ff0f1e761dc595c7ccdb8398094fb8e088b2d50" "25c06a000382b6239999582dfa2b81cc0649f3897b394a75ad5a670329600b45" "85e6bb2425cbfeed2f2b367246ad11a62fb0f6d525c157038a0d0eaaabc1bfee" "50d07ab55e2b5322b2a8b13bc15ddf76d7f5985268833762c500a90e2a09e7aa" "12670281275ea7c1b42d0a548a584e23b9c4e1d2dabb747fd5e2d692bcd0d39b" "aea30125ef2e48831f46695418677b9d676c3babf43959c8e978c0ad672a7329" "36282815a2eaab9ba67d7653cf23b1a4e230e4907c7f110eebf3cdf1445d8370" "2a998a3b66a0a6068bcb8b53cd3b519d230dd1527b07232e54c8b9d84061d48d" "16dd114a84d0aeccc5ad6fd64752a11ea2e841e3853234f19dc02a7b91f5d661" "dd4628d6c2d1f84ad7908c859797b24cc6239dfe7d71b3363ccdd2b88963f336" "a62f0662e6aa7b05d0b4493a8e245ab31492765561b08192df61c9d1c7e1ddee" default)))
+    ("100eeb65d336e3d8f419c0f09170f9fd30f688849c5e60a801a1e6addd8216cb" "e11569fd7e31321a33358ee4b232c2d3cf05caccd90f896e1df6cab228191109" "fee4e306d9070a55dce4d8e9d92d28bd9efe92625d2ba9d4d654fc9cd8113b7f" "3be1f5387122b935a26e02795196bc90860c57a62940f768f138b02383d9a257" "6145e62774a589c074a31a05dfa5efdf8789cf869104e905956f0cbd7eda9d0e" "4feee83c4fbbe8b827650d0f9af4ba7da903a5d117d849a3ccee88262805f40d" "6daa09c8c2c68de3ff1b83694115231faa7e650fdbb668bc76275f0f2ce2a437" "fede08d0f23fc0612a8354e0cf800c9ecae47ec8f32c5f29da841fe090dfc450" "8e51e44e5b079b2862335fcc5ff0f1e761dc595c7ccdb8398094fb8e088b2d50" "25c06a000382b6239999582dfa2b81cc0649f3897b394a75ad5a670329600b45" "85e6bb2425cbfeed2f2b367246ad11a62fb0f6d525c157038a0d0eaaabc1bfee" "50d07ab55e2b5322b2a8b13bc15ddf76d7f5985268833762c500a90e2a09e7aa" "12670281275ea7c1b42d0a548a584e23b9c4e1d2dabb747fd5e2d692bcd0d39b" "aea30125ef2e48831f46695418677b9d676c3babf43959c8e978c0ad672a7329" "36282815a2eaab9ba67d7653cf23b1a4e230e4907c7f110eebf3cdf1445d8370" "2a998a3b66a0a6068bcb8b53cd3b519d230dd1527b07232e54c8b9d84061d48d" "16dd114a84d0aeccc5ad6fd64752a11ea2e841e3853234f19dc02a7b91f5d661" "dd4628d6c2d1f84ad7908c859797b24cc6239dfe7d71b3363ccdd2b88963f336" "a62f0662e6aa7b05d0b4493a8e245ab31492765561b08192df61c9d1c7e1ddee" default)))
+ '(fci-rule-color "#383838")
+ '(nrepl-message-colors
+   (quote
+    ("#CC9393" "#DFAF8F" "#F0DFAF" "#7F9F7F" "#BFEBBF" "#93E0E3" "#94BFF3" "#DC8CC3")))
  '(package-selected-packages
    (quote
     (base16-theme fish-completion fish-mode osx-pseudo-daemon osx-browse nginx-mode toml-mode flycheck-clang-analyzer ac-clang clang-format company-c-headers csharp-mode ac-js2 discover-js2-refactor js2-highlight-vars js2-refactor rjsx-mode scss-mode typescript-mode jq-mode js-auto-beautify js-doc json-rpc jsx-mode gitignore-templates cmake-mode powershell csv-mode orca org-agenda-property org-doing org-ref osx-clipboard osx-lib osx-plist osx-trash org-projectile-helm docker docker-api docker-compose-mode docker-tramp dockerfile-mode groovy-mode flycheck-plantuml plantuml-mode protobuf-mode markdown-mode ac-c-headers ac-cider ac-etags ac-html ac-inf-ruby ace-flyspell cider-decompile cider-eval-sexp-fu cider-hydra cider-profile cider-spy clj-refactor cljr-helm clojure-mode-extra-font-locking flycheck-clojure inf-clojure org-ac org-autolist org-journal org-projectile company-inf-ruby zop-to-char zenburn-theme yari yard-mode which-key web-mode volatile-highlights vkill use-package undo-tree ssh-config-mode smex smartrep smartparens smart-mode-line slime salt-mode ruby-tools ruby-electric ruby-block robe rainbow-mode rainbow-delimiters racer ov operate-on-number move-text magit key-chord json-mode jinja2-mode imenu-anywhere ido-completing-read+ helm-projectile helm-descbinds helm-ag guru-mode grizzl gotest google-c-style god-mode go-projectile go-autocomplete gitignore-mode gitconfig-mode gitattributes-mode git-timemachine gist geiser flymake-yaml flymake-json flymake-coffee flycheck-rust flx-ido expand-region exec-path-from-shell enh-ruby-mode elisp-slime-nav editorconfig easy-kill discover-my-major diminish diff-hl crux counsel company-go company-auctex company-anaconda coffee-mode cider chruby cdlatex cargo browse-kill-ring beacon anzu ace-window ac-helm)))
- '(plantuml-jar-path "/usr/local/Cellar/plantuml/1.2018.1/libexec/plantuml.jar"))
+ '(pdf-view-midnight-colors (quote ("#DCDCCC" . "#383838")))
+ '(plantuml-jar-path "/usr/local/Cellar/plantuml/1.2018.1/libexec/plantuml.jar")
+ '(vc-annotate-background "#2B2B2B")
+ '(vc-annotate-color-map
+   (quote
+    ((20 . "#BC8383")
+     (40 . "#CC9393")
+     (60 . "#DFAF8F")
+     (80 . "#D0BF8F")
+     (100 . "#E0CF9F")
+     (120 . "#F0DFAF")
+     (140 . "#5F7F5F")
+     (160 . "#7F9F7F")
+     (180 . "#8FB28F")
+     (200 . "#9FC59F")
+     (220 . "#AFD8AF")
+     (240 . "#BFEBBF")
+     (260 . "#93E0E3")
+     (280 . "#6CA0A3")
+     (300 . "#7CB8BB")
+     (320 . "#8CD0D3")
+     (340 . "#94BFF3")
+     (360 . "#DC8CC3"))))
+ '(vc-annotate-very-old-color "#DC8CC3"))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
