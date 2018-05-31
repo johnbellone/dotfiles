@@ -44,7 +44,7 @@
 (use-package base16-theme
   :ensure t
   :config
-  (load-theme 'base16-eighties t))
+  (load-theme 'base16-gruvbox-dark-hard t))
 
 (define-key emacs-lisp-mode-map (kbd "<S-iso-lefttab>")  'lisp-complete-symbol)
 (define-key emacs-lisp-mode-map (kbd "<backtab>")  'lisp-complete-symbol)
