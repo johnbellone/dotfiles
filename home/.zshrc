@@ -31,7 +31,7 @@ compinit
 promptinit
 
 PROMPT="%F{216}%~ %F{229}%# %f"
-echo "uptime $(uptime)"
+echo "$(w)"
 
 butcher() {
     for x; do
