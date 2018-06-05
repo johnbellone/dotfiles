@@ -9,6 +9,11 @@ export CLICOLOR=1
 export LSCOLORS="gxBxhxDxfxhxhxhxhxcxcx"
 export LS_COLORS='di=38;5;108:fi=00:*svn-commit.tmp=31:ln=38;5;116:ex=38;5;186'
 
+# Set up environmnet for Go development (and running binaries from `go get`).
+export GOPATH=$HOME/go
+[ -d $GOPATH ] && \
+    path+=("$GOPATH/bin")
+
 # Handle homebrew on OSX installing coreutils into an alternate directory.
 [ -d /usr/local/opt/coreutils/libexec/gnubin ] && \
     path+=(/usr/local/opt/coreutils/libexec/gnubin)
